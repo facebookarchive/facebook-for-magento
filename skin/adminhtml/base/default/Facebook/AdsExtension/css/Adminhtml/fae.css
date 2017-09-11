@@ -1,0 +1,272 @@
+/**
+ * Copyright (c) 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the code directory.
+ */
+
+#facebook-header {
+  width: 600px;
+  color: #141823;
+  margin: 0 auto;
+  padding: 0;
+  direction: ltr;
+  unicode-bidi: embed;
+  color: #141823;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAABUCAMAAACfvxb8AAAAeFBMVEVOaaJMZ6FIZJ89W5lBXps8WplDYJxNaKFKZqBGYp5HY54/XJpCX5xFYZ07WZg+XJpLZqBAXZtJZZ9EYZ1NaKI8Wpg9WplMaKFNaaJJZJ9LZ6FEYJ1FYp1DX5xAXptJZaBAXZo+W5k+W5pKZaBGY55LZ6A8WZg/XZpJqQD4AAAAVklEQVR4Xk3CBQoDABADwU3d3d37/x8WAqEHI/jboZV1Y2sqDuiNZtaLJ7qihe1RoxjEC/XjhMaxtCPqxBmNolVc0Nxu6IuGMbUHuqNmsbF2rO2DJhg/RwEE6AR0V3kAAAAASUVORK5CYII=);
+  background-repeat: repeat-x;
+  background-size: 1px 42px;
+  background-position: 0 0;
+  background-color: #3a5795;
+  border: 0;
+  border-bottom: 1px solid #133783;
+  box-shadow: none;
+  font-family: helvetica, arial, sans-serif;
+  position: relative;
+  border: 0;
+  border-radius: 3px 3px 0 0;
+  color: #141823;
+  line-height: 1.28;
+}
+
+#facebook-header td {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+}
+
+#facebook-header .title {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: left;
+}
+
+
+#facebook-header .logo {
+  background-image: url(../../images/Adminhtml/fbicons.png);
+  background-size: 104px 92px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 10px 10px 7px 7px;
+  width: 24px;
+  height: 24px;
+  background-position: -9px -39px;
+}
+
+#facebook-header:after {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAICAYAAADTLS5CAAAAHElEQVQIW2OQNUx7AMIMckaZt0GYAQikoJh4AACS2waFtyG3bQAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  background-size: 1px 4px;
+  background-position: 0 0;
+  bottom: -4px;
+  content: '';
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+div.dia-flow-container {
+  width: 600px;
+  background: #fff;
+  color: #141823;
+  line-height: 1.28;
+  margin: 0 auto;
+  padding: 0;
+  direction: ltr;
+  unicode-bidi: embed;
+  color: #141823;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+}
+
+div.dia-flow-container>div {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+div.dia-flow-container div.header {
+  background: white !important;
+  text-align: left;
+  font-family: helvetica, arial, sans-serif;
+  color: #141823;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+div.dia-flow-container div.header h2 {
+  font-size: 24px;
+  margin-bottom: 0px;
+  font-weight: normal;
+}
+
+div.dia-flow-container a {
+  color: #3b5998;
+  text-decoration: none;
+}
+
+div.dia-flow-container button {
+  background-color: #f6f7f8;
+  background-image: url(../../images/Adminhtml/buttonbg.png);
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-sizing: content-box;
+  font-family: helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0;
+  border-color: #cccccc #c5c6c8 #b6b7b9;
+  color: #4e5665;
+  text-shadow: 0 1px 0 #fff;
+  background-position: 0 -75px;
+  font-size: 14px;
+  line-height: 34px;
+  padding: 0 16px;
+  cursor: pointer;
+  margin: 3px;
+}
+
+div.dia-flow-container button.blue {
+  background-position: 0 -389px;
+  background-color: #4e69a2;
+  border-color: #435a8b #3c5488 #334c83;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+div.dia-flow-container textarea {
+  background-repeat: repeat-x;
+  border: 1px solid;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-sizing: content-box;
+  font-family: helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  vertical-align: middle;
+  border-color: #cccccc #c5c6c8 #b6b7b9;
+  color: #4e5665;
+  text-shadow: 0 1px 0 #fff;
+  background-position: 0 -75px;
+  padding: 10px 16px;
+  margin: 3px;
+  width: 400px !important;
+}
+
+div.dia-flow-container select {
+  width: 400px !important;
+  margin: 10px 16px;
+}
+
+div.dia-flow-container label {
+  font-family: helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  font-size: 14px;
+  color: #4e5665;
+  padding: 0px;
+}
+
+div.dia-flow-container hr {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+div.dia-flow-container .feed-footnote {
+  list-style-type: decimal;
+  font-size: 0.8em;
+  margin-left: 12px;
+}
+
+div.dia-flow-container .feed-footnote>li {
+  padding-left: 1px;
+}
+
+div.dia-flow-container h1 {
+  font-size: 22px;
+  line-height: 117%;
+  color: #141823;
+  font-weight: normal;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 64px;
+}
+
+div.dia-flow-container h2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: #7f7f7f;
+  font-weight: normal;
+  width: 520px;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+div.dia-flow-container .modal-container {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+div.dia-flow-container .modal-container .modal {
+  text-align: left;
+  width: 600px;
+  background-color: white;
+  margin: 20% auto;
+  border-radius: 3px;
+}
+
+div.dia-flow-container .modal-container .modal .modal-header {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #f6f7f8;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 3px 3px 0 0;
+  color: #141823;
+  padding: 10px 12px;
+}
+
+div.dia-flow-container .modal-container .modal .modal-content {
+  color: #232937;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 30px 12px;
+}
+
+div.dia-flow-container .modal-container .modal .modal-close {
+  text-align: right;
+  border-top: 1px solid #dcdee3;
+  margin: 0 12px;
+  background-color: #fff;
+  padding: 12px 0;
+}
+
+div.dia-flow-container .modal-container .modal .modal-close button {
+  margin: 0;
+  padding: 0 14px;
+}
+

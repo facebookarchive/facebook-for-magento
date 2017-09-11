@@ -1,0 +1,17 @@
+<?php if ($this->getFacebookPixelID()) { ?>
+ <script>
+  fbq('track', 'InitiateCheckout', {
+    source: 'magento',
+    version: "<?php echo $this->getMagentoVersion() ?>",
+    pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+    content_type: "<?php echo $this->getContentType() ?>",
+    content_ids: [<?php echo $this->getContentIDs() ?>]
+    <?php if ($this->getValue() && $this->getCurrency()) { ?>
+      , value: <?php echo $this->getValue() ?>
+    <?php } ?>
+    <?php if ($this->getValue() && $this->getCurrency()) { ?>
+      , currency: "<?php echo $this->getCurrency() ?>"
+    <?php } ?>
+  });
+ </script>
+<?php } ?>

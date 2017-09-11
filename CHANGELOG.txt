@@ -1,0 +1,9 @@
+*** Facebook Ads Extension For Magento Changelog ***
+
+2017-09-11 version 2.3.0
+- Open source & move to github.
+
+2017-07-25 version 2.2.x
+- Add support for store/storeview selection.
+- Add option for using Advanced Matching with the Facebook Pixel
+- Fix issues with special characters in product urls.

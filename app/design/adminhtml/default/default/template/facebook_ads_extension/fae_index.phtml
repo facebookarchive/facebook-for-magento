@@ -1,0 +1,67 @@
+<script>
+window.facebookAdsExtensionAjax = {
+  setDiaSettingId: '<?php echo $this->getDiaSettingIdAjaxRoute() ?>'
+ ,setPixelId: '<?php echo $this->getPixelAjaxRoute() ?>'
+ ,setStoreId: '<?php echo $this->getStoreAjaxRoute() ?>'
+ ,generateFeedNow: '<?php echo $this->getFeedGenerateNowAjaxRoute() ?>'
+ ,debug: '<?php echo $this->getDebugRoute() ?>'
+};
+</script>
+<script>
+window.facebookAdsExtensionConfig = {
+  hasGzipSupport: <?php echo extension_loaded('zlib') ? 'true' : 'false' ?>
+ ,popupOrigin: 'https://www.facebook.com/ads/dia'
+ ,feedWasDisabled: '<?php echo $this->enableFeedNOW() ?>'
+ ,feedWritePermissionError: '<?php echo $this->checkFeedWriteError() ?>'
+ ,platform: 'Magento'
+ ,pixel: {
+    pixelId: '<?php echo $this->fetchPixelId() ?>'
+   ,advanced_matching_supported: true
+  }
+ ,store: {
+    baseUrl: '<?php echo $this->getStoreBaseUrl() ?>'
+   ,baseCurrency: '<?php echo $this->fetchStoreBaseCurrency() ?>'
+   ,timezoneId: <?php echo $this->fetchStoreTimezone() ?>
+   ,storeName: '<?php echo $this->fetchStoreName() ?>'
+   ,version: '<?php echo FacebookAdsExtension::getMagentoVersion() ?>'
+   ,plugin_version: '<?php echo FacebookAdsExtension::version() ?>'
+   ,debug_key: '<?php echo FacebookAdsExtension::getDebugKey() ?>'
+   ,modules: '<?php echo $this->getModuleList() ?>'
+  }
+ ,feed: {
+    enabled: <?php echo $this->fetchFeedSetupEnabled() === 1 ? 'true' : 'false' ?>
+   ,format: '<?php echo $this->fetchFeedSetupFormat() ?>'
+   ,totalVisibleProducts: <?php echo FacebookAdsExtension::getTotalVisibleProducts(
+        $this->getSelectedStore()
+      )
+    ?>
+ }
+ ,defaultStoreId: '<?php echo $this->getSelectedStore() ?>'
+ ,stores: '<?php echo json_encode($this->getStores()) ?>'
+<?php if ($this->getDiaSettingId() != null) { ?>
+ ,diaSettingId: <?php echo $this->getDiaSettingId() ?>
+<?php } else { ?>
+  /* no dia setting id found */
+<?php } ?>
+ ,feedPrepared: {
+    feedUrl: '<?php echo $this->getFeedUrl() ?>'
+   ,feedPingUrl: '<?php echo FacebookAdsExtension::getFeedPingUrl() ?>'
+   ,samples:
+<?php
+  $samples = $this->fetchFeedSamples();
+  if ($samples && count($samples) > 0) {
+    echo json_encode($samples);
+  } else {
+    echo '[ /* no samples are generated */ ]';
+  }
+?>
+  }
+};
+</script>
+<div id="facebook-header">
+  <table><tbody>
+    <tr><td><i class='logo'></i></td>
+    <td><span class='title'>Facebook Ads Extension</span></td></tr>
+  </tbody></table>
+</div>
+<div id="dia-flow"></div>

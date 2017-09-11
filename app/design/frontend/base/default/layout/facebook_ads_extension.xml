@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+  <default>
+    <reference name="head">
+      <block type="Facebook_AdsExtension/head"
+             name="facebook_ads_extension.head"
+             template="facebook_ads_extension/head.phtml" />
+      <block type="Facebook_AdsExtension/addToCart"
+             name="facebook_ads_extension.addtocart"
+             template="facebook_ads_extension/addtocart.phtml" />"
+    </reference>
+  </default>
+  <catalog_product_view>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/viewContent"
+             name="facebook_ads_extension.viewcontent"
+             template="facebook_ads_extension/viewcontent.phtml" />
+    </reference>
+  </catalog_product_view>
+  <catalog_category_view>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/viewCategory"
+             name="facebook_ads_extension.viewcategory"
+             template="facebook_ads_extension/viewcategory.phtml" />
+    </reference>
+  </catalog_category_view>
+  <checkout_onepage_index>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/initiateCheckout"
+             name="facebook_ads_extension.initiate_checkout"
+             template="facebook_ads_extension/initiate_checkout.phtml" />
+    </reference>
+  </checkout_onepage_index>
+  <checkout_onepage_success>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/purchase"
+             name="facebook_ads_extension.purchase"
+             template="facebook_ads_extension/purchase.phtml" />
+    </reference>
+  </checkout_onepage_success>
+  <catalogsearch_result_index>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/search"
+             name="facebook_ads_extension.search"
+             template="facebook_ads_extension/search.phtml" />
+    </reference>
+  </catalogsearch_result_index>
+</layout>

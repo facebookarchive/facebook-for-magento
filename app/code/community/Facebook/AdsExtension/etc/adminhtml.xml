@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <menu>
+    <facebook_ads_extension translate="title"
+      module="Facebook_AdsExtension">
+      <title>Facebook Ads Extension</title>
+      <sort_order>72</sort_order>
+      <action>adminhtml/fbmain/index</action>
+    </facebook_ads_extension>
+  </menu>
+</config>

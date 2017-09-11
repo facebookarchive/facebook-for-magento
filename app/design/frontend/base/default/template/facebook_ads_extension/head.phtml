@@ -1,0 +1,26 @@
+<!-- Facebook Ads Extension for Magento -->
+<?php if ($this->getFacebookPixelID()) { ?>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+fbq('init', '<?php echo $this->getFacebookPixelID() ?>', <?php echo $this->pixelInitCode() ?>, {agent: '<?php echo $this->getFacebookAgentVersion() ?>' });
+fbq('track', 'PageView', {
+  source: 'magento',
+  version: "<?php echo $this->getMagentoVersion() ?>",
+  pluginVersion: "<?php echo $this->getPluginVersion() ?>"
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=<?php echo $this->getFacebookPixelID() ?>&ev=PageView&noscript=1&cd[source]=magento&cd[version]=<?php echo $this->getMagentoVersion() ?>&cd[pluginVersion]=<?php echo $this->getPluginVersion() ?>&a=<?php echo $this->getFacebookAgentVersion() ?>"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<?php } else  { ?>
+<!-- NO Pixel ID is configured, please goto Admin -->
+<script>
+ console.log('No facebook pixel is configured, please log in as a admin and then visit Facebook Ads Extension -> Get Started');
+</script>
+<?php } ?>

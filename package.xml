@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<package>
+    <name>Facebook_Ads_Extension</name>
+    <version>2.3.0</version>
+    <stability>beta</stability>
+    <license uri="https://raw.githubusercontent.com/fbsamples/audience-network-support/master/LICENSE">Facebook License</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Easily set up a pixel and catalog to use advanced advertising products and drive sales on Facebook.</summary>
+    <description>Marketing on Facebook helps your business build lasting relationships with people, find new customers and increase sales for your online store. With this Facebook ad extension, we make it easy to reach the people who matter to your business and track the results of your advertising across devices. _This extension will help you:_&#xD;
+&#xD;
+**Reach the right people**&#xD;
+Set up the Facebook pixel to find new customers, optimize your ads for people likely to buy and reach people with relevant ads on Facebook after they've visited your website.&#xD;
+&#xD;
+**Show them the right products**&#xD;
+Connect your product catalog to Facebook to use dynamic ads. Reach shoppers when they're on Facebook with ads for the products they viewed on your website.&#xD;
+&#xD;
+**Measure the results of your ads**&#xD;
+When you have the Facebook pixel set up, you can use Facebook ads reporting to understand the sales and revenue that resulted from your ads.&#xD;
+&#xD;
+&#xD;
+_Many online retailers have found success using the Facebook pixel to track the performance of their ads and run dynamic ads:_&#xD;
+&#xD;
+&#xD;
+&#x201C;The ability to measure sales was the first sign that our business would be a success.  Our first day of breaking 100-plus sales always sticks out.  Point blank, our marketing plan is Facebook, Facebook, and more Facebook... Facebook is 100% the backbone of our customer acquisition efforts and it's been made even better with the improved Facebook pixel&#x201D; &#x2014; Ali Najafian, co-founder, Trendy Butler&#xD;
+&#xD;
+&#xD;
+&#x201C;I'm thrilled with the results we've seen since launching dynamic ads.  We saw a rise in conversions almost immediately after launch and have been able to scale the program at an impressive pace over the past 6 months.  These ads have proven to be a key component of our marketing efforts&#x201D; &#x2014; Megan Lang, Digital Marketing Manager, Food52&#xD;
+&#xD;
+&#xD;
+&#x201C;With dynamic ads, Target has been able to easily engage consumers with highly relevant creative.  The early results have exceeded expectations.  Performance has been especially strong on mobile devices &#x2014; an important and fast-growing area for Target &#x2014; where we're seeing two times the conversion rate&#x201D; &#x2014; Kristi Argyilan, Senior Vice President, Media and Guest Engagement at Target&#xD;
+&#xD;
+&#xD;
+&#xD;
+_What's included?_&#xD;
+**(a) Pixel installer**&#xD;
+Installing the Facebook pixel allows you to access the features below:&#xD;
+&#xD;
+* Conversion tracking: See how successful your ad is by seeing what happened as a direct result of your ad (including conversions and sales)&#xD;
+* Optimization:  Show your ads to people most likely to take a specific action after clicking on them, like adding an item to their cart or making a purchase&#xD;
+* Remarketing: When people visit your website, reach them again and remind them of your business with a Facebook ad&#xD;
+&#xD;
+** (b) Product catalog integration**&#xD;
+Importing your product catalog to Facebook allows you to use dynamic ads.  Dynamic ads look identical to other link ads or carousel-format ads that are available on Facebook. However, instead of individually creating an ad for each of your products, Facebook creates the ads for you and personalizes them for each of your customers.&#xD;
+&#xD;
+* Scale: Use dynamic ads to promote all your products without needing to create individual ads for each item&#xD;
+* Highly relevant: Show people ads for products they're interested in to increase the likelihood of a purchase&#xD;
+* Always-on: Set up your campaigns once and continually reach people with the right product at the right time&#xD;
+* Cross-device: Reach people with ads on any device they use, regardless of where they first see your products&#xD;
+&#xD;
+&#xD;
+_Installation Instructions_&#xD;
+&#xD;
+1. Install the extension from Magento Connect&#xD;
+2. Go to your Admin Panel&#xD;
+3. Select Facebook Ads Extension&#xD;
+4. Click Get Started&#xD;
+&#xD;
+&#xD;
+Additional FAQ&#xD;
+https://www.facebook.com/help/532749253576163</description>
+    <notes>- Open source.</notes>
+    <authors><author><name>Jordan Rogers-Smith</name><user>jordanrs</user><email>jordanrs@fb.com</email></author><author><name>Yu Li</name><user>liyuhk</user><email>liyuhk@fb.com</email></author><author><name>Dmitri Dranishnikov</name><user>dmitrid</user><email>dmitrid@fb.com</email></author><author><name>Adam Hoff</name><user>ahoff</user><email>ahoff@fb.com</email></author><author><name>Xia Wu</name><user>xiawuthu</user><email>xiawuthu@fb.com</email></author></authors>
+    <date>2017-09-11</date>
+    <time>23:12:23</time>
+    <contents><target name="magecommunity"><dir name="Facebook"><dir name="AdsExtension"><dir><dir name="Block"><file name="AddToCart.php" hash="d838e1027d8056067c7d8f41044308ab"/><dir name="Adminhtml"><file name="Diaindex.php" hash="4e378c836853066e64b233c98b439d43"/><file name="Feedindex.php" hash="1bbeab1f1bc7eceebb1d7ffca5772e9c"/><file name="Pixelindex.php" hash="29f21842ff2440eb7459dafbea16c389"/></dir><file name="Head.php" hash="990584d3b2599f8f6bc782d0a7b43a82"/><file name="InitiateCheckout.php" hash="b8b889f1889c8560f96b376f96b46490"/><file name="Purchase.php" hash="98d9b202351be743c03b1e7855b7c75a"/><file name="Search.php" hash="fedf7abfe3f5e35d6089442e2889c5fd"/><file name="ViewCategory.php" hash="8d40741b4c4b4b5a1cda50b59a6b57b7"/><file name="ViewContent.php" hash="0466bdfc612cd9ae86396cbc63149e7d"/><file name="common.php" hash="adac7f7fdebab00ec16f94cd82948959"/></dir><dir name="Helper"><file name="Data.php" hash="1b0a7c57bc216cb939effa71c95654db"/></dir><dir name="Model"><file name="FacebookProductFeed.php" hash="f56f0edd3c79b938b4ce2e8206466e0c"/><file name="FacebookProductFeedSamples.php" hash="2a39b6438bdff9616aef413d0c84d374"/><file name="FacebookProductFeedTSV.php" hash="09ef9672e4149e6207a41b343c4e7463"/><file name="FacebookProductFeedXML.php" hash="6386e04be9e81896e3e65b6e74555379"/><file name="Observer.php" hash="ff4262de69363dcc00e890a5071e9d65"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="FbdebugController.php" hash="bc862ef6238a438e41e901c51a9351d9"/><file name="FbfeedController.php" hash="a9024a4efa7bf9900e4ccbd89da898b8"/><file name="FbmainController.php" hash="75b27977dfbc1a140f9d8ad166fc0a8d"/><file name="FbpixelController.php" hash="c99be64d48a2900f445ce1f7cdff5cd2"/><file name="FbregenController.php" hash="83a5ecf40427ce7c226e9bdf287426e7"/><file name="FbstoreController.php" hash="f69a9d975343b881c7aa0dbf64584a44"/></dir><file name="DebugController.php" hash="64b78c8e31abf0cc336a28cf4f6113d7"/><file name="ProductfeedController.php" hash="1ecda3d197e2aec629944c8c530fa55a"/></dir><dir name="etc"><file name="adminhtml.xml" hash="cc2c76850e467b3d0b937d2a2da90004"/><file name="config.xml" hash="75ee59e2df535a284f85bfcb16a2d6aa"/></dir><dir name="lib"><file name="fb.php" hash="2734834cefd37bde00f5537933bd4a71"/></dir></dir><file name="LICENSE" hash="1a0c85492c893e916fc1a4c1918076ad"/></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="facebook_ads_extension.xml" hash="07af48ec537f6322ee9bcc553f342d56"/></dir><dir name="template"><dir name="facebook_ads_extension"><file name="addtocart.phtml" hash="c1a930b7c09e75f0d9746cba611e3c76"/><file name="head.phtml" hash="f5db028b9b1ff8e8f78aad8fa633653d"/><file name="initiate_checkout.phtml" hash="676e97512a1653bb3965c7171594db98"/><file name="purchase.phtml" hash="1a0383a64698a9d4c2131afc69762fc6"/><file name="search.phtml" hash="35d58ba1a53f73f715c81d2011a9a2d7"/><file name="viewcategory.phtml" hash="c8b8997a60d3129dd2c3bb72e21b5fb5"/><file name="viewcontent.phtml" hash="55f054f759b06537376774ccbe6dddbe"/></dir></dir></dir></dir></dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="facebook_ads_extension.xml" hash="38ba8a643045363ccd7cde28ce181581"/></dir><dir name="template"><dir name="facebook_ads_extension"><file name="fae_index.phtml" hash="cabb7e0b7649bec9aabbf91c53a02d9a"/></dir></dir></dir></dir></dir></target><target name="mageweb"><dir name="js"><dir name="Facebook"><dir name="AdsExtension"><dir><dir name="Adminhtml"><file name="fae.js" hash="e667ae988860006f6c9a42232770d700"/><dir name="lib"><file name="IEOverlay.js" hash="f25278fd86bd7c89a14ad16e2aadf8b6"/><file name="Modal.js" hash="85b1ee5ba5e31bc5e4cf3c1e163d407b"/><file name="react-dom.min.js" hash="80dd76fff4872e658666dec43913360c"/><file name="react.min.js" hash="c3207f7bf39699d4279ba404ea55f163"/><file name="utils.js" hash="850f3345b738d12645d29479c150eb0f"/></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Facebook_AdsExtension.xml" hash="ceabca57f051b452079da7a9394e62ec"/></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="base"><dir name="default"><dir name="Facebook"><dir name="AdsExtension"><dir><dir name="css"><dir name="Adminhtml"><file name="fae.css" hash="201b2a78305d44d6eeebbf67231e7767"/></dir></dir><dir name="images"><dir name="Adminhtml"><file name="buttonbg.png" hash="09adbacda0d592a215277230c48df285"/><file name="fbicons.png" hash="8f1b559a279a3785f1b2492a79f518d8"/></dir></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>8.0.0</max></php></required></dependencies>
+</package>
