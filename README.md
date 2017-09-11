@@ -6,8 +6,8 @@ This plugin will install a Facebook Pixel and upload your products to Facebook f
 
 ## Get started
 
-To use this extension download the latest code from our GitHub repository as a zip file.
-Then, upload the zip file through the Magento Connect Manager in your Magento admin panel.
+To use this extension download the latest .tgz from the releases section of our GitHub repository.
+Then, upload the .tgz file through the Magento Connect Manager in your Magento admin panel.
 If you get stuck, try our [help center](https://www.facebook.com/business/help/532749253576163).
 
 ## Requirements
@@ -27,4 +27,4 @@ See the CONTRIBUTING file for how to help out.
 
 ## License
 
-Facebook Ads Extension For Magento is BSD-licensed.
+Facebook Ads Extension For Magento is Platform-licensed.
