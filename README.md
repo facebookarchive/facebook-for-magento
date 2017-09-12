@@ -46,7 +46,7 @@ Cross-device: Reach people with ads on any device they use, regardless of where 
 
 ## Usage Instructions
 
-To use this extension download the packaged code from the [releases](/releases/latest) section our GitHub repository as a .tgz file.
+To use this extension download the packaged code from the [releases](../../releases/latest) section our GitHub repository as a .tgz file.
 Then, upload the .tgz file through the Magento Connect Manager in your Magento admin panel.
 If you get stuck, try our [help center](https://www.facebook.com/business/help/532749253576163).
 
