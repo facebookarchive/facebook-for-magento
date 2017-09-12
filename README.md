@@ -27,15 +27,20 @@ Many online retailers have found success using the Facebook pixel to track the p
 Installing the Facebook pixel allows you to access the features below:
 
 Conversion tracking: See how successful your ad is by seeing what happened as a direct result of your ad (including conversions and sales)
+
 Optimization: Show your ads to people most likely to take a specific action after clicking on them, like adding an item to their cart or making a purchase
+
 Remarketing: When people visit your website, reach them again and remind them of your business with a Facebook ad
 
 ### (b) Product catalog integration
 Importing your product catalog to Facebook allows you to use dynamic ads. Dynamic ads look identical to other link ads or carousel-format ads that are available on Facebook. However, instead of individually creating an ad for each of your products, Facebook creates the ads for you and personalizes them for each of your customers.
 
 Scale: Use dynamic ads to promote all your products without needing to create individual ads for each item
+
 Highly relevant: Show people ads for products they're interested in to increase the likelihood of a purchase
+
 Always-on: Set up your campaigns once and continually reach people with the right product at the right time
+
 Cross-device: Reach people with ads on any device they use, regardless of where they first see your products
 
 
