@@ -286,7 +286,7 @@ var FAEFlowContainer = React.createClass({
       window.facebookAdsExtensionConfig.exception = this.state.exceptionTrace;
       return React.createElement(
         'div',
-        {className: 'dia-flow-container', style: {color: 'red'}},
+        {className: 'fae-flow-container', style: {color: 'red'}},
         React.createElement('div', null),
         'Fatal exception when loading configuration. Please send the trace below ' +
         'to the Developers by using the provided button. ',
@@ -307,7 +307,7 @@ var FAEFlowContainer = React.createClass({
 
     return React.createElement(
       'div',
-      { className: 'dia-flow-container' },
+      { className: 'fae-flow-container' },
       modal,
       React.createElement(
         'h1',
@@ -382,8 +382,31 @@ var displayFBModal = function displayFBModal() {
   // Render
   ReactDOM.render(
     React.createElement(FAEFlowContainer, null),
-    document.getElementById('dia-flow')
+    document.getElementById('fae-flow')
   );
+
+  // Backwards Compatibility warning for accidental multiple install.
+  setTimeout(function(){
+    if (window.facebookAdsToolboxConfig) {
+        var warning = React.createElement(
+          'div',
+          {className: 'fae-flow-container', style: {color: 'red'}},
+          React.createElement('div', null),
+          'We have detected that you have two versions of the Facebook Ads Extension plugin installed. Please uninstall the older version: It should appear as "Facebook_Ads_Toolbox" in your Magento Connect Manager.',
+          React.createElement('div', null)
+        );
+        var diaFlow = document.getElementById('dia-flow');
+        diaFlow.removeChild(diaFlow.firstChild);
+        ReactDOM.render(
+          warning,
+          diaFlow,
+        );
+        ReactDOM.render(
+          warning,
+          document.getElementById('fae-flow')
+        );
+    }
+  }, 500);
 };
 
 // Logic for when to display the container.

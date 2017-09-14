@@ -38,7 +38,7 @@ class Facebook_AdsExtension_Adminhtml_FbregenController
     $ob = Mage::getModel('Facebook_AdsExtension/observer');
     $use_cache = $request->getPost('useCache', false);
     $obins = new $ob;
-    $obins->internalGenerateFacebookProductFeed(false, $use_cache);
+    $obins->internalGenerateFBProductFeed(false, $use_cache);
 
     $this->ajaxSend(array(
       'success' => true,

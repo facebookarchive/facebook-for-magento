@@ -8,28 +8,28 @@
  * of patent rights can be found in the PATENTS file in the code directory.
  */
 
-if (file_exists(__DIR__.'/FacebookProductFeed.php')) {
-  include_once 'FacebookProductFeed.php';
+if (file_exists(__DIR__.'/FBProductFeed.php')) {
+  include_once 'FBProductFeed.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeed.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
 }
 
-if (file_exists(__DIR__.'/FacebookProductFeedTSV.php')) {
-  include_once 'FacebookProductFeedTSV.php';
+if (file_exists(__DIR__.'/FBProductFeedTSV.php')) {
+  include_once 'FBProductFeedTSV.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeedTSV.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeedTSV.php';
 }
 
-if (file_exists(__DIR__.'/FacebookProductFeedXML.php')) {
-  include_once 'FacebookProductFeedXML.php';
+if (file_exists(__DIR__.'/FBProductFeedXML.php')) {
+  include_once 'FBProductFeedXML.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeedXML.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeedXML.php';
 }
 
-if (file_exists(__DIR__.'/FacebookProductFeedSamples.php')) {
-  include_once 'FacebookProductFeedSamples.php';
+if (file_exists(__DIR__.'/FBProductFeedSamples.php')) {
+  include_once 'FBProductFeedSamples.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeedSamples.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeedSamples.php';
 }
 
 class Facebook_AdsExtension_Model_Observer {
@@ -67,7 +67,7 @@ class Facebook_AdsExtension_Model_Observer {
   private function _isFileStaleLockedForFeedPath($feedpath) {
     $lock_path = $feedpath.'.lck';
     if (file_exists($lock_path)) {
-      if (FacebookProductFeed::fileIsStale($lock_path)) {
+      if (FBProductFeed::fileIsStale($lock_path)) {
         return 'stale_lock';
       } else {
         return 'fresh_lock';
@@ -80,10 +80,10 @@ class Facebook_AdsExtension_Model_Observer {
   private static function getFeedObject() {
     $supportzip = extension_loaded('zlib');
     $format = Mage::getStoreConfig(
-      FacebookProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_FORMAT
+      FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_FORMAT
     ) ?: 'TSV';
-    $feed = ($format === 'TSV') ? new FacebookProductFeedTSV() :
-                                  new FacebookProductFeedXML();
+    $feed = ($format === 'TSV') ? new FBProductFeedTSV() :
+                                  new FBProductFeedXML();
     return $feed;
   }
 
@@ -91,16 +91,16 @@ class Facebook_AdsExtension_Model_Observer {
     return file_exists(self::getFeedObject()->getFullPath());
   }
 
-  public function internalGenerateFacebookProductFeed(
+  public function internalGenerateFBProductFeed(
     $throwException = false,
     $checkCache = true
   ) {
-    FacebookProductFeed::log('feed generation start...');
+    FBProductFeed::log('feed generation start...');
     $time_start = time();
     $supportzip = extension_loaded('zlib');
     $feed = self::getFeedObject();
     $feed_target_file_path = $feed->getTargetFilePath($supportzip);
-    $format = ($feed instanceof FacebookProductFeedTSV) ? 'TSV' : 'XML';
+    $format = ($feed instanceof FBProductFeedTSV) ? 'TSV' : 'XML';
 
     if ($checkCache) {
       $isstale = $feed->cacheIsStale($supportzip);
@@ -108,7 +108,7 @@ class Facebook_AdsExtension_Model_Observer {
         $this->_isFileStaleLockedForFeedPath($feed_target_file_path);
       if (($lock_status ==  'no_lock') && !$isstale) {
         $time_end = time();
-        FacebookProductFeed::log(
+        FBProductFeed::log(
           sprintf(
             'feed files are fresh and complete, skip generation, '.
             'time used: %d seconds',
@@ -120,7 +120,7 @@ class Facebook_AdsExtension_Model_Observer {
             sprintf('Lock is fresh, generation must be in process.')
           );
         } else {
-          FacebookProductFeed::log(
+          FBProductFeed::log(
             sprintf('Lock is fresh, generation must be in process.')
           );
           return;
@@ -136,7 +136,7 @@ class Facebook_AdsExtension_Model_Observer {
         $feed->saveGZip();
       }
     } catch (\Exception $e) {
-      FacebookProductFeed::log(sprintf(
+      FBProductFeed::log(sprintf(
         'Caught exception: %s. %s', $e->getMessage(), $e->getTraceAsString()
       ));
       if ($throwException) {
@@ -148,7 +148,7 @@ class Facebook_AdsExtension_Model_Observer {
 
     $time_end = time();
     $feed_gen_time = ($time_end - $time_start);
-    FacebookProductFeed::log(
+    FBProductFeed::log(
       sprintf(
         'feed generation finished, time used: %d seconds',
         $feed_gen_time));
@@ -167,12 +167,12 @@ class Facebook_AdsExtension_Model_Observer {
     return array($format, $feed, $supportzip);
   }
 
-  public function generateFacebookProductFeed($schedule) {
-    $this->internalGenerateFacebookProductFeed();
+  public function generateFBProductFeed($schedule) {
+    $this->internalGenerateFBProductFeed();
   }
 
   public function generateFacebookProductSamples() {
-    $feed = new FacebookProductFeedSamples();
+    $feed = new FBProductFeedSamples();
     return $feed->generate();
   }
 
@@ -191,7 +191,7 @@ class Facebook_AdsExtension_Model_Observer {
       if (self::checkFeedExists()) {
         return '';
       }
-      $dir = FacebookProductFeed::getFeedDirectory();
+      $dir = FBProductFeed::getFeedDirectory();
       return is_writable($dir) ? '' : $dir;
     } catch (Exception $e) {
       return '/media/';

@@ -24,7 +24,7 @@ class Facebook_AdsExtension_ProductfeedController
       $settings_id = Mage::getStoreConfig('facebook_ads_toolbox/dia/setting/id');
 
       list($format, $feed, $supportzip) =
-        $obins->internalGenerateFacebookProductFeed();
+        $obins->internalGenerateFBProductFeed();
       if ($supportzip) {
         $this->getResponse()->setHeader('Content-type', 'application/x-gzip');
         list($filename, $filesize, $filecontent) = $feed->readGZip();

@@ -74,7 +74,7 @@
   right: 0;
 }
 
-div.dia-flow-container {
+div.fae-flow-container {
   width: 600px;
   background: #fff;
   color: #141823;
@@ -90,12 +90,12 @@ div.dia-flow-container {
   text-align: center;
 }
 
-div.dia-flow-container>div {
+div.fae-flow-container>div {
   margin-top: 18px;
   margin-bottom: 18px;
 }
 
-div.dia-flow-container div.header {
+div.fae-flow-container div.header {
   background: white !important;
   text-align: left;
   font-family: helvetica, arial, sans-serif;
@@ -104,18 +104,18 @@ div.dia-flow-container div.header {
   margin-bottom: 0px;
 }
 
-div.dia-flow-container div.header h2 {
+div.fae-flow-container div.header h2 {
   font-size: 24px;
   margin-bottom: 0px;
   font-weight: normal;
 }
 
-div.dia-flow-container a {
+div.fae-flow-container a {
   color: #3b5998;
   text-decoration: none;
 }
 
-div.dia-flow-container button {
+div.fae-flow-container button {
   background-color: #f6f7f8;
   background-image: url(../../images/Adminhtml/buttonbg.png);
   background-repeat: repeat-x;
@@ -141,7 +141,7 @@ div.dia-flow-container button {
   margin: 3px;
 }
 
-div.dia-flow-container button.blue {
+div.fae-flow-container button.blue {
   background-position: 0 -389px;
   background-color: #4e69a2;
   border-color: #435a8b #3c5488 #334c83;
@@ -149,7 +149,7 @@ div.dia-flow-container button.blue {
   color: #ffffff;
 }
 
-div.dia-flow-container textarea {
+div.fae-flow-container textarea {
   background-repeat: repeat-x;
   border: 1px solid;
   border-radius: 2px;
@@ -168,12 +168,12 @@ div.dia-flow-container textarea {
   width: 400px !important;
 }
 
-div.dia-flow-container select {
+div.fae-flow-container select {
   width: 400px !important;
   margin: 10px 16px;
 }
 
-div.dia-flow-container label {
+div.fae-flow-container label {
   font-family: helvetica, arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
@@ -182,7 +182,7 @@ div.dia-flow-container label {
   padding: 0px;
 }
 
-div.dia-flow-container hr {
+div.fae-flow-container hr {
   margin-top: 18px;
   margin-bottom: 18px;
   border: 0;
@@ -191,17 +191,17 @@ div.dia-flow-container hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-div.dia-flow-container .feed-footnote {
+div.fae-flow-container .feed-footnote {
   list-style-type: decimal;
   font-size: 0.8em;
   margin-left: 12px;
 }
 
-div.dia-flow-container .feed-footnote>li {
+div.fae-flow-container .feed-footnote>li {
   padding-left: 1px;
 }
 
-div.dia-flow-container h1 {
+div.fae-flow-container h1 {
   font-size: 22px;
   line-height: 117%;
   color: #141823;
@@ -211,7 +211,7 @@ div.dia-flow-container h1 {
   margin-top: 64px;
 }
 
-div.dia-flow-container h2 {
+div.fae-flow-container h2 {
   font-size: 14px;
   line-height: 16px;
   color: #7f7f7f;
@@ -221,7 +221,7 @@ div.dia-flow-container h2 {
   margin-top: 16px;
 }
 
-div.dia-flow-container .modal-container {
+div.fae-flow-container .modal-container {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -232,7 +232,7 @@ div.dia-flow-container .modal-container {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-div.dia-flow-container .modal-container .modal {
+div.fae-flow-container .modal-container .modal {
   text-align: left;
   width: 600px;
   background-color: white;
@@ -240,7 +240,7 @@ div.dia-flow-container .modal-container .modal {
   border-radius: 3px;
 }
 
-div.dia-flow-container .modal-container .modal .modal-header {
+div.fae-flow-container .modal-container .modal .modal-header {
   font-size: 14px;
   font-weight: bold;
   background-color: #f6f7f8;
@@ -250,14 +250,14 @@ div.dia-flow-container .modal-container .modal .modal-header {
   padding: 10px 12px;
 }
 
-div.dia-flow-container .modal-container .modal .modal-content {
+div.fae-flow-container .modal-container .modal .modal-content {
   color: #232937;
   font-size: 14px;
   line-height: 18px;
   padding: 30px 12px;
 }
 
-div.dia-flow-container .modal-container .modal .modal-close {
+div.fae-flow-container .modal-container .modal .modal-close {
   text-align: right;
   border-top: 1px solid #dcdee3;
   margin: 0 12px;
@@ -265,8 +265,7 @@ div.dia-flow-container .modal-container .modal .modal-close {
   padding: 12px 0;
 }
 
-div.dia-flow-container .modal-container .modal .modal-close button {
+div.fae-flow-container .modal-container .modal .modal-close button {
   margin: 0;
   padding: 0 14px;
 }
-

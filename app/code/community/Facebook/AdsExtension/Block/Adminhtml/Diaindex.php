@@ -127,7 +127,7 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
     $feed_setup = $this->getFeedIndex()->fetchFeedSetupEnabled();
     if (!$feed_setup) {
       Mage::getModel('core/config')->saveConfig(
-        FacebookProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
+        FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
         true);
       return true;
     }

@@ -14,10 +14,10 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/../../Model/FacebookProductFeed.php')) {
-  include_once __DIR__.'/../../Model/FacebookProductFeed.php';
+if (file_exists(__DIR__.'/../../Model/FBProductFeed.php')) {
+  include_once __DIR__.'/../../Model/FBProductFeed.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeed.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
 }
 
 class Facebook_AdsExtension_Block_Adminhtml_Feedindex
@@ -43,12 +43,12 @@ class Facebook_AdsExtension_Block_Adminhtml_Feedindex
   }
 
   public function fetchFeedSetupEnabled() {
-    $setup = FacebookProductFeed::getCurrentSetup();
+    $setup = FBProductFeed::getCurrentSetup();
     return $setup['enabled'];
   }
 
   public function fetchFeedSetupFormat() {
-    $setup = FacebookProductFeed::getCurrentSetup();
+    $setup = FBProductFeed::getCurrentSetup();
     return $setup['format'];
   }
 }

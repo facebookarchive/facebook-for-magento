@@ -14,13 +14,13 @@ if (file_exists(__DIR__.'/../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/FacebookProductFeed.php')) {
-  include_once 'FacebookProductFeed.php';
+if (file_exists(__DIR__.'/FBProductFeed.php')) {
+  include_once 'FBProductFeed.php';
 } else {
-  include_once 'Facebook_AdsExtension_Model_FacebookProductFeed.php';
+  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
 }
 
-class FacebookProductFeedSamples extends FacebookProductFeed {
+class FBProductFeedSamples extends FBProductFeed {
 
   protected function tsvescape($t) {
     // replace newlines as TSV does not allow multi-line value
