@@ -1,5 +1,8 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2017-09-22 version 2.3.2
+- Bundled Products price is now exported with Tax, if applicable.
+
 2017-09-13 version 2.3.1
 - Fix a crash that occurs if a two versions of this plugin are installed at
   once. Add a warning message with resolution steps.

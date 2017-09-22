@@ -653,7 +653,7 @@ class FBProductFeed {
   }
 
   private function getBundleProductPrice($product) {
-    return $product->getPriceModel()->getTotalPrices($product, 'min', 0, 1);
+    return $product->getPriceModel()->getTotalPrices($product, 'min', 1, 1);
   }
 
   private function getGroupedProductPrice($product) {
