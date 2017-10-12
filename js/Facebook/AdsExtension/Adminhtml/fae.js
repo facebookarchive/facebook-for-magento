@@ -300,7 +300,7 @@ var FAEFlowContainer = React.createClass({
         React.createElement(
           'div',
           {style: {color: 'black'}, align: 'left'},
-          this.state.exceptionTrace,
+          this.state.exceptionTrace
         )
       );
     }
@@ -399,7 +399,7 @@ var displayFBModal = function displayFBModal() {
         diaFlow.removeChild(diaFlow.firstChild);
         ReactDOM.render(
           warning,
-          diaFlow,
+          diaFlow
         );
         ReactDOM.render(
           warning,
