@@ -1,5 +1,9 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2017-11-03 version 2.3.3
+- Use 'Gender' attribute in feed, if it exists. Added by @tahoff
+- Link to new ads creation interface. Added by @mengyingdu
+
 2017-09-22 version 2.3.2
 - Bundled Products price is now exported with Tax, if applicable.
 

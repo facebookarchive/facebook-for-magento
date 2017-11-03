@@ -18,9 +18,11 @@ class Facebook_AdsExtension_Adminhtml_FbpixelController
 
   public function ajaxAction() {
     if (Mage::app()->getRequest()->isAjax()) {
+      $old_pixel_id =
+        Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/id');
       $response = array(
         'success' => false,
-        'pixelId' => Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/id'),
+        'pixelId' => $old_pixel_id,
         'pixelUsePii' =>
           Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/pixel_use_pii'),
       );
@@ -36,6 +38,12 @@ class Facebook_AdsExtension_Adminhtml_FbpixelController
         $response['success'] = true;
         $response['pixelId'] = $pixel_id;
         $response['pixelUsePii'] = $pixel_use_pii;
+
+        if ($old_pixel_id != $pixel_id) {
+          Mage::getModel('core/config')->saveConfig(
+            'facebook_ads_toolbox/fbpixel/install_time',
+            Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s'));
+        }
       }
 
       $this->getResponse()->setHeader('Content-type', 'application/json');

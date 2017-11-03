@@ -278,6 +278,24 @@ var FAEFlowContainer = React.createClass({
       ),
       storeSelector
     );
+    var diffsInDays = 0;
+    if (window.facebookAdsExtensionConfig.pixel_install_time != '') {
+      var pixelInstallTime = (new Date(window.facebookAdsExtensionConfig.pixel_install_time)).getTime();
+      var now = (new Date()).getTime();
+      diffsInDays = parseInt((now - pixelInstallTime) / (24*3600*1000));
+    }
+
+    var redirectLink = this.state.diaSettingId && diffsInDays > 7 ? React.createElement(
+      'div',
+      {style: {whiteSpace: "nowrap", fontSize: "13px"}},
+      'Good news! You can now optimize your Facebook Ads, based on data from your pixel. ',
+      React.createElement(
+        'a',
+        {href: 'https://www.facebook.com/ads/dia/redirect/?settings_id=' + this.state.diaSettingId},
+        'Get Started'
+      ),
+      '.'
+    ) : '';
 
     var feedWritePermissionError = window.facebookAdsExtensionConfig.feedWritePermissionError;
     var modal = this.state.showModal ? React.createElement(FBModal, { onClose: this.closeModal, message: this.modalMessage }) : null;
@@ -309,6 +327,7 @@ var FAEFlowContainer = React.createClass({
       'div',
       { className: 'fae-flow-container' },
       modal,
+      redirectLink,
       React.createElement(
         'h1',
         null,

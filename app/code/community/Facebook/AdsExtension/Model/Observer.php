@@ -95,6 +95,8 @@ class Facebook_AdsExtension_Model_Observer {
     $throwException = false,
     $checkCache = true
   ) {
+    self::maybeSetPixelInstallTime();
+
     FBProductFeed::log('feed generation start...');
     $time_start = time();
     $supportzip = extension_loaded('zlib');
@@ -197,5 +199,17 @@ class Facebook_AdsExtension_Model_Observer {
       return '/media/';
     }
     return '';
+  }
+
+  private static function maybeSetPixelInstallTime() {
+    // 1. new extension user: AKA pixel install time
+    // 2. upgrading user: upgrade the version which support redirect FB CF
+    $pixel_install_time =
+      Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/install_time');
+    if (!$pixel_install_time) {
+      Mage::getModel('core/config')->saveConfig(
+        'facebook_ads_toolbox/fbpixel/install_time',
+        Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s'));
+    }
   }
 }

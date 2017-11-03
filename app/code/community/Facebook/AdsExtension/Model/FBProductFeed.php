@@ -28,6 +28,7 @@ class FBProductFeed {
   const ATTR_GOOGLE_PRODUCT_CATEGORY = 'google_product_category';
   const ATTR_SHORT_DESCRIPTION = 'short_description';
   const ATTR_PRODUCT_TYPE = 'product_type';
+  const ATTR_GENDER = 'gender';
 
   const PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED =
     'facebook_adstoolbox/feed/generation/enabled';
@@ -90,6 +91,7 @@ class FBProductFeed {
       case self::ATTR_CONDITION:
       case self::ATTR_AVAILABILITY:
       case self::ATTR_PRICE:
+      case self::ATTR_GENDER:
         if ((bool)$attr_value) {
           $attr_value = $escapefn ? $this->$escapefn($attr_value) : $attr_value;
           return trim($attr_value);
@@ -262,11 +264,49 @@ class FBProductFeed {
       $this->buildProductAttr(self::ATTR_GOOGLE_PRODUCT_CATEGORY,
         $product->getData('google_product_category'));
 
+    $gender = $this->getGenderInformation($product->getData('gender'));
+    $items[self::ATTR_GENDER] = $this->buildProductAttr(self::ATTR_GENDER, $gender);
+
     return $items;
   }
 
   protected function htmlDecode($attr_value) {
     return strip_tags(html_entity_decode(($attr_value)));
+  }
+
+  private function getGenderInformation($gender_id) {
+    if (!$gender_id) {
+      return $gender_id;
+    }
+
+    if (!isset($this->gender_map)) {
+      $this->gender_map = array();
+    }
+
+    if ($this->gender_map[$gender_id]) {
+      return $this->gender_map[$gender_id];
+    }
+
+    $attribute_model = Mage::getModel('eav/entity_attribute');
+    $attribute_code = $attribute_model->getIdByCode('catalog_product', 'gender');
+    $attribute = $attribute_model->load($attribute_code);
+
+    $attribute_table = Mage::getModel('eav/entity_attribute_source_table');
+    $attribute_table->setAttribute($attribute);
+    $gender = $attribute_table->getOptionText($gender_id);
+    $gender = trim(strtolower($gender));
+
+    if (!$gender) {
+      return $gender;
+    }
+
+    if ($gender != 'male' && $gender != 'female') {
+      $gender = 'unisex';
+    }
+
+    // Add this value to the cache
+    $this->gender_map[$gender_id] = $gender;
+    return $gender;
   }
 
   // Generates a map of the form : 4 => "Root > Mens > Shoes"

@@ -166,4 +166,10 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
   public function checkFeedWriteError() {
     return Mage::getModel('Facebook_AdsExtension/observer')->checkFeedWriteError();
   }
+
+  public function getPixelInstallTime() {
+    $pixel_install_time =
+      Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/install_time');
+    return $pixel_install_time ?: '';
+  }
 }

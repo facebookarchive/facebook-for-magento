@@ -18,6 +18,7 @@ window.facebookAdsExtensionConfig = {
     pixelId: '<?php echo $this->fetchPixelId() ?>'
    ,advanced_matching_supported: true
   }
+ ,pixel_install_time: '<?php echo $this->getPixelInstallTime() ?>'
  ,store: {
     baseUrl: '<?php echo $this->getStoreBaseUrl() ?>'
    ,baseCurrency: '<?php echo $this->fetchStoreBaseCurrency() ?>'
