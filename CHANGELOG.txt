@@ -1,6 +1,10 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
-2017-11-03 version 2.3.3
+2017-12-07 version 2.3.5
+- Fix memory leak.
+- New method of loading store specific products.
+
+2017-11-03 version 2.3.4
 - Use 'Gender' attribute in feed, if it exists. Added by @tahoff
 - Link to new ads creation interface. Added by @mengyingdu
 

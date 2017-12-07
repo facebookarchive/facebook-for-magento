@@ -387,6 +387,7 @@ class FBProductFeed {
     $this->conversion_needed = $this->isCurrencyConversionNeeded();
     $skip_count = 0;
     $exception_count = 0;
+    Mage::app()->setCurrentStore($this->store_id);
 
     $this->store_url = Mage::app()
       ->getStore()
@@ -421,14 +422,13 @@ class FBProductFeed {
 
       $products = Mage::getModel('catalog/product')->getCollection()
         ->addAttributeToSelect('*')
-        ->addStoreFilter($this->store_id)
+        ->addStoreFilter()
         ->setPageSize($batch_max)
         ->setCurPage($count / $batch_max + 1)
         ->addUrlRewrite();
 
       foreach ($products as $product) {
         try {
-          $product->setStoreId($this->store_id)->load($product->getId());
           $product_name = $product->getName();
           if ($product->getVisibility() != Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE &&
               $product->getStatus() != Mage_Catalog_Model_Product_Status::STATUS_DISABLED &&
@@ -438,6 +438,7 @@ class FBProductFeed {
           } else {
             $skip_count++;
           }
+          $product->clearInstance();
         } catch (\Exception $e) {
           $exception_count++;
           // Don't overload the logs, log the first 3 exceptions.
