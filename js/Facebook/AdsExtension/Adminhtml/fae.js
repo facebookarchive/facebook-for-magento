@@ -307,7 +307,8 @@ var FAEFlowContainer = React.createClass({
         {className: 'fae-flow-container', style: {color: 'red'}},
         React.createElement('div', null),
         'Fatal exception when loading configuration. Please send the trace below ' +
-        'to the Developers by using the provided button. ',
+        'to the Developers by using the provided button. Then open a new issue on our github ',
+        React.createElement('a', {href: 'https://github.com/facebookincubator/facebook-for-magento/issues'}, ' here.'),
         React.createElement('div', null),
         React.createElement(
           'button',

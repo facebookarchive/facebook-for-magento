@@ -438,7 +438,6 @@ class FBProductFeed {
           } else {
             $skip_count++;
           }
-          $product->clearInstance();
         } catch (\Exception $e) {
           $exception_count++;
           // Don't overload the logs, log the first 3 exceptions.
@@ -450,6 +449,7 @@ class FBProductFeed {
             throw $e;
           }
         }
+        $product->clearInstance();
       }
       unset($products);
       $count += $batch_max;
@@ -666,9 +666,29 @@ class FBProductFeed {
     if (!isset($this->current_currency)) {
       $this->current_currency = Mage::app()->getStore($this->store_id)->getCurrentCurrencyCode();
     }
-
+    
     if ($this->base_currency === $this->current_currency) {
       return $price;
+    }
+
+    if (!isset($this->currency_rate)) {
+      $this->currency_rate =
+        Mage::getModel('directory/currency')->getCurrencyRates(
+          $this->base_currency, array($this->current_currency)
+        );
+      $this->currency_rate =
+        is_array($this->currency_rate) ? end($this->currency_rate) : 0;
+    }
+
+    if (!$this->currency_rate || is_nan($this->currency_rate)) {
+      self::log("ERROR : Currency Conversion Rate Is 0/Infinity.");
+      throw new Exception(
+        "ERROR : Currency Conversion Rate Is 0/Infinity.\n".
+        "Failed when converting ".$this->base_currency." to ".$this->current_currency.
+        " getCurrencyRate() returned ".($this->currency_rate ?: " NULL")."\n".
+        " This can be fixed by setting your currency rates in ".
+        "System > Currency > Rates"
+      );
     } else {
       return Mage::helper('directory')->currencyConvert(
         $price,

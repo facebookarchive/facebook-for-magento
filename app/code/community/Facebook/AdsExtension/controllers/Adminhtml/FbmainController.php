@@ -20,7 +20,7 @@ class Facebook_AdsExtension_Adminhtml_FbmainController
   protected function _isAllowed() {
     return Mage::getSingleton('admin/session')->isAllowed('facebook_ads_extension');
   }
-  
+
   public function indexAction() {
     $this->loadLayout();
     $this->_setActiveMenu('facebook_ads_extension');

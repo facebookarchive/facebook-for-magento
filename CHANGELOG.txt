@@ -1,5 +1,9 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2017-12-14 version 2.3.6
+- Blank Screen Fix : Detect case where currency conversion rate is undefined.
+- Include ACL Permissions (Thanks @WaPoNe!)
+
 2017-12-07 version 2.3.5
 - Fix memory leak.
 - New method of loading store specific products.
