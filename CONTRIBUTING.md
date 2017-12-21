@@ -30,6 +30,6 @@ outlined on that page and do not file a public issue.
 * 80 character line length
 
 ## License
-By contributing to Facebook Ads Extension (Magento), you agree that your contributions
+By contributing to Facebook Ads Extension For Magento, you agree that your contributions
 will be licensed under the LICENSE file in the root directory of
 this source tree.
