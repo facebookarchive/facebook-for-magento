@@ -1,6 +1,6 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
-2018-03-09 version 2.4.0
+2018-03-12 version 2.4.0
 - Add automatic FB Shop creation as an advanced option available during setup.
 
 2017-12-14 version 2.3.6
