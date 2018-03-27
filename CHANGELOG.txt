@@ -1,5 +1,8 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2018-03-12 version 2.4.0
+- Add automatic FB Shop creation as an advanced option available during setup.
+
 2017-12-14 version 2.3.6
 - Blank Screen Fix : Detect case where currency conversion rate is undefined.
 - Include ACL Permissions (Thanks @WaPoNe!)
@@ -20,9 +23,9 @@
   once. Add a warning message with resolution steps.
 
 2017-09-11 version 2.3.0
-- Open source & move to github.
+  - Open source & move to github.
 
 2017-07-25 version 2.2.x
-- Add support for store/storeview selection.
-- Add option for using Advanced Matching with the Facebook Pixel
-- Fix issues with special characters in product urls.
+  - Add support for store/storeview selection.
+  - Add option for using Advanced Matching with the Facebook Pixel
+  - Fix issues with special characters in product urls.

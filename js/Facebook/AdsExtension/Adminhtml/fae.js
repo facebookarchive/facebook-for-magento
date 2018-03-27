@@ -268,6 +268,26 @@ var FAEFlowContainer = React.createClass({
       advancedOptionsText
     );
 
+    var shopToggleFunction = function() {
+      window.facebookAdsExtensionConfig.store.canSetupShop =
+        !window.facebookAdsExtensionConfig.store.canSetupShop;}
+    var shopSetupOption = React.createElement(
+      'input',
+      {
+          type: 'checkbox',
+          defaultChecked: false,
+          onChange: shopToggleFunction,
+          title: 'This is an experimental feature. Use at your own risk.' +
+                 ' If you have an existing installation, you will need to ' +
+                 ' reset it via Manage Settings > Advanced Options > Delete ' +
+                 ' in order to access setup again to see this feature.',
+      },
+      React.createElement(
+        'span',
+        {style: {whiteSpace: "nowrap", fontSize: "13px"}},
+        ' Enable (Setup Only)',
+      ),
+    );
     var advancedOptions = React.createElement(
       'div',
       {id: 'fbAdvancedOptions', style: {display: 'none'}},
@@ -276,8 +296,16 @@ var FAEFlowContainer = React.createClass({
         null,
         'Store Synced with Facebook'
       ),
-      storeSelector
+      storeSelector,
+      React.createElement(
+        'h2',
+        null,
+        'Automatic Shop Creation'
+      ),
+      React.createElement('div', {style: {padding: '4px'}}),
+      shopSetupOption
     );
+
     var diffsInDays = 0;
     if (window.facebookAdsExtensionConfig.pixel_install_time != '') {
       var pixelInstallTime = (new Date(window.facebookAdsExtensionConfig.pixel_install_time)).getTime();
