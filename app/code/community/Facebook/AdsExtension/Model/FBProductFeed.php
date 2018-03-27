@@ -283,7 +283,7 @@ class FBProductFeed {
       $this->gender_map = array();
     }
 
-    if ($this->gender_map[$gender_id]) {
+    if (isset($this->gender_map[$gender_id])) {
       return $this->gender_map[$gender_id];
     }
 
@@ -666,7 +666,6 @@ class FBProductFeed {
     if (!isset($this->current_currency)) {
       $this->current_currency = Mage::app()->getStore($this->store_id)->getCurrentCurrencyCode();
     }
-
     if ($this->base_currency === $this->current_currency) {
       return $price;
     }
