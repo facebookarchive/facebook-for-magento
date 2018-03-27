@@ -102,8 +102,8 @@ class FBProductFeed {
           $attr_value = $escapefn ? $this->$escapefn($attr_value) : $attr_value;
           $attr_value = trim($attr_value);
           // brand max size: 70
-          if (strlen($attr_value) > 70) {
-            $attr_value = substr($attr_value, 0, 70);
+          if (mb_strlen($attr_value) > 70) {
+            $attr_value = mb_substr($attr_value, 0, 70);
           }
           return $attr_value;
         }
@@ -112,8 +112,8 @@ class FBProductFeed {
         if ((bool)$attr_value) {
           $attr_value = $this->processAttrValue($attr_value, $escapefn);
           // title max size: 100
-          if (strlen($attr_value) > 100) {
-            $attr_value = substr($attr_value, 0, 100);
+          if (mb_strlen($attr_value) > 100) {
+            $attr_value = mb_substr($attr_value, 0, 100);
           }
           return $attr_value;
         }
@@ -122,8 +122,8 @@ class FBProductFeed {
         if ((bool)$attr_value) {
           $attr_value = $this->processAttrValue($attr_value, $escapefn);
           // description max size: 5000
-          if (strlen($attr_value) > 5000) {
-            $attr_value = substr($attr_value, 0, 5000);
+          if (mb_strlen($attr_value) > 5000) {
+            $attr_value = mb_substr($attr_value, 0, 5000);
           }
           return $attr_value;
         }
@@ -131,8 +131,8 @@ class FBProductFeed {
       case self::ATTR_GOOGLE_PRODUCT_CATEGORY:
         // google_product_category max size: 250
         if ((bool)$attr_value) {
-          if (strlen($attr_value) > 250) {
-            $attr_value = substr($attr_value, 0, 250);
+          if (mb_strlen($attr_value) > 250) {
+            $attr_value = mb_substr($attr_value, 0, 250);
           }
           return $escapefn ? $this->$escapefn($attr_value) : $attr_value;
         }
@@ -142,8 +142,8 @@ class FBProductFeed {
           $attr_value = $this->processAttrValue($attr_value, $escapefn);
           // max size: 1000
           // and replacing the last 3 characters with '...' if it's too long
-          $attr_value = strlen($attr_value) >= 1000 ?
-            substr($attr_value, 0, 995).'...' :
+          $attr_value = mb_strlen($attr_value) >= 1000 ?
+            mb_substr($attr_value, 0, 995).'...' :
             $attr_value;
           return $attr_value;
         }
@@ -152,8 +152,8 @@ class FBProductFeed {
         // product_type max size: 750
         if ((bool)$attr_value) {
           $attr_value = $this->processAttrValue($attr_value, $escapefn);
-          if (strlen($attr_value) > 750) {
-            $attr_value = substr($attr_value, strlen($attr_value) - 750, 750);
+          if (mb_strlen($attr_value) > 750) {
+            $attr_value = mb_substr($attr_value, mb_strlen($attr_value) - 750, 750);
           }
           return $attr_value;
         }
@@ -182,7 +182,7 @@ class FBProductFeed {
     return
       // This can fail for non unicode links.
       filter_var($product_link, FILTER_VALIDATE_URL) ||
-      substr($product_link, 0, 4) === 'http';
+      mb_substr($product_link, 0, 4) === 'http';
   }
 
   protected function buildProductEntry($product, $product_name) {
