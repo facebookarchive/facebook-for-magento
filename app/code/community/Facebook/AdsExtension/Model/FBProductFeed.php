@@ -191,6 +191,8 @@ class FBProductFeed {
     $title = $product_name ? $product_name : $product->getName();
 
     $items[self::ATTR_ID] = $this->buildProductAttr(self::ATTR_ID, $product->getId());
+    $this->dedup_ids[$product->getId()] = true;
+
     $items[self::ATTR_TITLE] = $this->buildProductAttr(self::ATTR_TITLE, $title);
 
     // 'Description' is required by default but can be made
@@ -397,6 +399,7 @@ class FBProductFeed {
       self::log(sprintf('About to begin writing %d products',$total_number_of_products));
       self::log(sprintf('Store id = %d ', $this->store_id));
     }
+    $this->dedup_ids = array();
 
     $time_limit = (int) ini_get('max_execution_time');
     if ($time_limit !== 0 && $time_limit < 1800) {
@@ -430,9 +433,12 @@ class FBProductFeed {
       foreach ($products as $product) {
         try {
           $product_name = $product->getName();
+          $product_id = $product->getId();
           if ($product->getVisibility() != Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE &&
               $product->getStatus() != Mage_Catalog_Model_Product_Status::STATUS_DISABLED &&
-              $product_name) {
+              $product_name &&
+              $product_id &&
+              !isset($this->dedup_ids[$product_id])) {
             $e = $this->buildProductEntry($product, $product_name);
             $io->streamWrite($e."\n");
           } else {
