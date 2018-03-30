@@ -320,7 +320,7 @@ var FAEFlowContainer = React.createClass({
       React.createElement(
         'a',
         {href: 'https://www.facebook.com/ads/dia/redirect/?settings_id=' + this.state.diaSettingId},
-        'Get Started'
+        'Get More Sales'
       ),
       '.'
     ) : '';
