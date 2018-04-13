@@ -134,18 +134,6 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
     return false;
   }
 
-  public function getModuleList() {
-    $modules = Mage::getConfig()->getNode('modules')->children();
-    $simple_module_list = array();
-    foreach ($modules as $moduleName => $moduleSettings) {
-      $active = $moduleSettings->is('active') ? "active" : "disabled";
-      $version_key = 'version';
-      $module = $moduleName . ", " . $active . ", " . $moduleSettings->$version_key;
-      array_push($simple_module_list, $module);
-    }
-    return implode('; ', $simple_module_list);
-  }
-
   public function getStores() {
     $stores = Mage::app()->getStores(true);
 
