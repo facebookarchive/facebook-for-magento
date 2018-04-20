@@ -27,6 +27,7 @@ window.facebookAdsExtensionConfig = {
    ,version: '<?php echo FacebookAdsExtension::getMagentoVersion() ?>'
    ,plugin_version: '<?php echo FacebookAdsExtension::version() ?>'
    ,debug_key: '<?php echo FacebookAdsExtension::getDebugKey() ?>'
+   ,canSetupShop: true
   }
  ,feed: {
     enabled: <?php echo $this->fetchFeedSetupEnabled() === 1 ? 'true' : 'false' ?>

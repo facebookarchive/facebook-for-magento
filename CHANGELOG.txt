@@ -1,5 +1,9 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2018-04-20 version 2.4.2
+- FB Shop creation is enabled for all setups by default.
+- Remove un-needed debugging code.
+
 2018-03-27 version 2.4.1
 - De-Dup Multiple IDs in Feed File.
 - Replace substr/strlen with mb_substr/mb_strlen. Fixes blank screen issue.

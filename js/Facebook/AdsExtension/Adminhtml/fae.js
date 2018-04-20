@@ -275,7 +275,7 @@ var FAEFlowContainer = React.createClass({
       'input',
       {
           type: 'checkbox',
-          defaultChecked: false,
+          defaultChecked: true,
           onChange: shopToggleFunction,
           title: 'This is an experimental feature. Use at your own risk.' +
                  ' If you have an existing installation, you will need to ' +
@@ -360,12 +360,12 @@ var FAEFlowContainer = React.createClass({
       React.createElement(
         'h1',
         null,
-        'Turn your products into ads on Facebook'
+        'Grow your business on Facebook'
       ),
       React.createElement(
         'h2',
         null,
-        'Easily install a pixel and create a product catalog on Facebook to sell more of your products. Use the pixel to build the right audience and measure the return on your ad spend. Promote all your products at once with your catalog instead of having to create individual ads.'
+        'Easily install a pixel, upload your product catalog, and create a shop on Facebook to sell more of your products. Use the pixel to build the right audience and measure the return on your ad spend. Promote all your products at once with your catalog instead of having to create individual ads.'
       ),
       currentDiaSettingId,
       React.createElement(
