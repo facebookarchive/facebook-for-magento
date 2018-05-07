@@ -10,6 +10,13 @@
              template="facebook_ads_extension/addtocart.phtml" />"
     </reference>
   </default>
+  <cms_index_index>
+    <reference name="before_body_end">
+      <block type="Facebook_AdsExtension/messengerChat"
+             name="facebook_ads_extension.messengerchat"
+             template="facebook_ads_extension/messengerchat.phtml" />
+    </reference>
+  </cms_index_index>
   <catalog_product_view>
     <reference name="before_body_end">
       <block type="Facebook_AdsExtension/viewContent"

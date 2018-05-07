@@ -14,6 +14,7 @@ app/design/frontend/base/default/template/facebook_ads_extension/purchase.phtml 
 app/design/frontend/base/default/template/facebook_ads_extension/search.phtml            app/design/frontend/base/default/template/facebook_ads_extension/search.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/viewcategory.phtml            app/design/frontend/base/default/template/facebook_ads_extension/viewcategory.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/viewcontent.phtml            app/design/frontend/base/default/template/facebook_ads_extension/viewcontent.phtml
+app/design/frontend/base/default/template/facebook_ads_extension/messengerchat.phtml            app/design/frontend/base/default/template/facebook_ads_extension/messengerchat.phtml
 # js
 js/Facebook/AdsExtension/Adminhtml/fae.js            js/Facebook/AdsExtension/Adminhtml/fae.js
 js/Facebook/AdsExtension/Adminhtml/lib/IEOverlay.js            js/Facebook/AdsExtension/Adminhtml/lib/IEOverlay.js
