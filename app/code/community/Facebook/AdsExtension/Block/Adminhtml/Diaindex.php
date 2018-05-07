@@ -71,6 +71,11 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
       'adminhtml/fbstore/ajax');
   }
 
+  public function getMsgerChatSetupAjaxRoute() {
+    return Mage::helper('adminhtml')->getUrl(
+      'adminhtml/fbmsgerchatsetup/ajax');
+  }
+
   public function getDebugRoute() {
     return Mage::helper('adminhtml')->getUrl(
       'adminhtml/fbdebug/index');

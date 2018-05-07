@@ -111,6 +111,23 @@ var FAEFlowContainer = React.createClass({
         });
       },
 
+      'set msger chat': function setMsgerChatSetup(params) {
+        new Ajax.Request(window.facebookAdsExtensionAjax.setMsgerChatSetup, {
+          parameters: params,
+          onSuccess: function onSuccess(transport) {
+            var response = transport.responseText.evalJSON();
+            if (response.success) {
+              _this.ackToPopup('msger chat', params);
+            } else {
+              _this.failAckToPopup('msger chat', params);
+            }
+          },
+          onFailure: function onFailure() {
+            _this.failAckToPopup('msger chat', params);
+          }
+        });
+      },
+
       'gen feed': function genFeed(params) {
         new Ajax.Request(window.facebookAdsExtensionAjax.generateFeedNow, {
           parameters: {},
