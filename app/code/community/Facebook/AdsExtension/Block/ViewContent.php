@@ -35,7 +35,7 @@ class Facebook_AdsExtension_Block_ViewContent
 
   public function getValue() {
     $price = Mage::registry('current_product')->getPrice(); // Get price of the current product
-    $price = Mage::helper('core')->currency($gsdPrice, false, false); // Get price in correct currency 
+    $price = Mage::helper('core')->currency($price, false, false); // Get price in correct currency 
  
     return $price; 
   }
