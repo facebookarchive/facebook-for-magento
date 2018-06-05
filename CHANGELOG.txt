@@ -1,5 +1,10 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2018-06-01 version 2.5.0
+- UI Redesign.
+- UI reset when settings are deleted via popup.
+- Added Messenger Chat support (Beta).
+
 2018-04-20 version 2.4.2
 - FB Shop creation is enabled for all setups by default.
 - Remove un-needed debugging code.
