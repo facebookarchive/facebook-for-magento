@@ -33,7 +33,7 @@ class Facebook_AdsExtension_Adminhtml_FbmainController
       FacebookAdsExtension::log("Set Settings Ajax Request Received");
 
       $dia_setting_id = $this->getRequest()->getParam('diaSettingId');
-      if ($dia_setting_id) {
+      if ($dia_setting_id !== null) {
         Mage::getModel('core/config')->saveConfig(
           'facebook_ads_toolbox/dia/setting/id',
           $dia_setting_id

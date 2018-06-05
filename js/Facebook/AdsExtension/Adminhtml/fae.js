@@ -61,6 +61,19 @@ var FAEFlowContainer = React.createClass({
         _this.sendDiaConfigToPopup();
       },
 
+      'reset': function reset(params) {
+        _this.setState({ diaSettingId: null });
+        new Ajax.Request(window.facebookAdsExtensionAjax.setDiaSettingId, {
+          parameters: {diaSettingId: 0},
+          onSuccess: function onSuccess() {
+            _this.ackToPopup('reset', params);
+          },
+          onFailure: function onFailure() {
+            _this.failAckToPopup('reset', params);
+          }
+        });
+      },
+
       'set merchant settings': function setMerchantSettings(params) {
         if (!params.setting_id) {
           console.error('Facebook Ads Extension Error: find no merchant settings', params);
