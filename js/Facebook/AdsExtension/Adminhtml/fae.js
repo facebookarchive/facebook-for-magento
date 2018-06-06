@@ -50,7 +50,6 @@ var FAEFlowContainer = React.createClass({
     }
   },
 
-
   // Read the Facebook Ads Extension Developer Doc for an overview of this
   // protocol.
   onEvent: function onEvent(evdata) {
@@ -204,6 +203,12 @@ var FAEFlowContainer = React.createClass({
 
     this.popupWindow = window.open(popupUrl + '?origin=' + encodeURIComponent(originParam) + (this.state.diaSettingId ? '&merchant_settings_id=' + this.state.diaSettingId : ''), 'DiaWizard', ['toolbar=no', 'location=no', 'directories=no', 'status=no', 'menubar=no', 'scrollbars=no', 'resizable=no', 'copyhistory=no', 'width=' + width, 'height=' + height, 'top=' + topPos, 'left=' + leftPos].join(','));
   },
+  launchAutomatedAds: function launchAutomatedAds() {
+    window.open(
+      'https://www.facebook.com/ads/dia/redirect/?settings_id=' + this.state.diaSettingId,
+      '_blank',
+    );
+  },
   launchDiaWizard: function launchDiaWizard() {
     this.diaConfig = { 'clientSetup': window.facebookAdsExtensionConfig };
     this.openPopup();
@@ -268,8 +273,8 @@ var FAEFlowContainer = React.createClass({
     var currentDiaSettingId = this.state.diaSettingId ? React.createElement(
       'h2',
       null,
-      'Your Facebook Store ID: ',
-      this.state.diaSettingId
+      'Your store is connected to Facebook. Store ID: ',
+      this.state.diaSettingId,
     ) : '';
 
     // Add store options
@@ -336,25 +341,6 @@ var FAEFlowContainer = React.createClass({
       shopSetupOption
     );
 
-    var diffsInDays = 0;
-    if (window.facebookAdsExtensionConfig.pixel_install_time != '') {
-      var pixelInstallTime = (new Date(window.facebookAdsExtensionConfig.pixel_install_time)).getTime();
-      var now = (new Date()).getTime();
-      diffsInDays = parseInt((now - pixelInstallTime) / (24*3600*1000));
-    }
-
-    var redirectLink = this.state.diaSettingId && diffsInDays > 7 ? React.createElement(
-      'div',
-      {style: {whiteSpace: "nowrap", fontSize: "13px"}},
-      'Good news! You can now optimize your Facebook Ads, based on data from your pixel. ',
-      React.createElement(
-        'a',
-        {href: 'https://www.facebook.com/ads/dia/redirect/?settings_id=' + this.state.diaSettingId},
-        'Get More Sales'
-      ),
-      '.'
-    ) : '';
-
     var feedWritePermissionError = window.facebookAdsExtensionConfig.feedWritePermissionError;
     var modal = this.state.showModal ? React.createElement(FBModal, { onClose: this.closeModal, message: this.modalMessage }) : null;
 
@@ -381,43 +367,99 @@ var FAEFlowContainer = React.createClass({
         )
       );
     }
+    var hrElement = React.createElement('hr', {className:'fae-hr'}, null);
 
     return React.createElement(
       'div',
       { className: 'fae-flow-container' },
       modal,
-      redirectLink,
       React.createElement(
         'h1',
         null,
-        'Grow your business on Facebook'
+        (this.state.diaSettingId) ?
+          'Reach the right people and sell more products' :
+          'Grow your business on Facebook',
       ),
       React.createElement(
         'h2',
         null,
-        'Easily install a pixel, upload your product catalog, and create a shop on Facebook to sell more of your products. Use the pixel to build the right audience and measure the return on your ad spend. Promote all your products at once with your catalog instead of having to create individual ads.'
+        (this.state.diaSettingId) ?
+        React.createElement(
+          'div',
+          null,
+          'Use this Magento and Facebook integration to:',
+          React.createElement(
+            'ul',
+            null,
+            React.createElement('li', null, 'Create an ad in a few steps'),
+            React.createElement('li', null, 'Use built-in best practices for online sales'),
+            React.createElement('li', null, 'Get reporting on sales and revenue'),
+          ),
+        )
+        :
+        React.createElement(
+          'div',
+          null,
+          'Use this Magento and Facebook integration to:',
+          React.createElement(
+            'ul',
+            null,
+            React.createElement('li', null, 'Easily install a tracking pixel'),
+            React.createElement('li', null, 'Upload your products and create a shop'),
+            React.createElement('li', null, 'Create dynamic ads with your products and pixel'),
+          ),
+        ),
       ),
-      currentDiaSettingId,
+      (!feedWritePermissionError) ?
+        React.createElement(
+          'span',
+          null,
+          this.state.diaSettingId ?
+            React.createElement(
+              'button',
+              { className: 'blue', onClick: this.launchAutomatedAds },
+              'Create Ad',
+            ) :
+            React.createElement(
+              'button',
+              { className: 'blue', onClick: this.launchDiaWizard },
+              'Get Started',
+            ),
+          (this.state.diaSettingId) ?
+            React.createElement(
+              'button',
+              { className: 'button', onClick: this.launchLearnMore },
+              'Learn More',
+            ) : null,
+        ) : null,
+      hrElement,
       React.createElement(
         'div',
-        null,
+        { className: 'settings', hidden: !this.state.diaSettingId},
         React.createElement(
-          'center',
+          'h1',
           null,
-          (!feedWritePermissionError) ? React.createElement(
-            'button',
-            { className: 'blue', onClick: this.launchDiaWizard },
-            this.state.diaSettingId ? 'Manage Settings' : 'Get Started'
-          )
-          :
-          React.createElement(
-            'h2',
-            {style: {color: 'red'}},
-            'Please enable write permissions in the ',
-            feedWritePermissionError,
-            ' directory to use this extension.'
-          )
-        )
+          'Settings',
+        ),
+        currentDiaSettingId,
+        React.createElement(
+          'div',
+          null,
+            (this.state.diaSettingId) ? React.createElement(
+              'button',
+              { className: 'small', onClick: this.launchDiaWizard, title: 'Manage Settings'},
+              'Settings'
+            )
+            :
+            React.createElement(
+              'h2',
+              {style: {color: 'red'}},
+              'Please enable write permissions in the ',
+              feedWritePermissionError,
+              ' directory to use this extension.'
+            )
+          ),
+          hrElement,
       ),
       advancedOptionsLink,
       advancedOptions
