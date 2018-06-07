@@ -205,7 +205,8 @@ var FAEFlowContainer = React.createClass({
   },
   launchAutomatedAds: function launchAutomatedAds() {
     window.open(
-      'https://www.facebook.com/ads/dia/redirect/?settings_id=' + this.state.diaSettingId,
+      'https://www.facebook.com/ads/dia/redirect/?settings_id=' +
+      this.state.diaSettingId + '&version=2',
       '_blank',
     );
   },
@@ -425,12 +426,6 @@ var FAEFlowContainer = React.createClass({
               { className: 'blue', onClick: this.launchDiaWizard },
               'Get Started',
             ),
-          (this.state.diaSettingId) ?
-            React.createElement(
-              'button',
-              { className: 'button', onClick: this.launchLearnMore },
-              'Learn More',
-            ) : null,
         ) : null,
       hrElement,
       React.createElement(
