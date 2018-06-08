@@ -58,7 +58,7 @@ Visit Facebook's [Advertiser Help Center](https://www.facebook.com/business/help
 
 Facebook Ads Extension For Magento requires
 * Magento version 1.7, 1.8 or 1.9
-* PHP 5.3 or greater
+* PHP 5.5 or greater
 * Memory limit of 128 MB or greater (256 MB or higher is preferred)
 
 ## Full documentation
