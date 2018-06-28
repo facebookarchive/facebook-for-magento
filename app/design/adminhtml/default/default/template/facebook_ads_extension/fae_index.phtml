@@ -22,7 +22,7 @@ window.facebookAdsExtensionAjax = {
 
 window.facebookAdsExtensionConfig = {
   hasGzipSupport: <?php echo extension_loaded('zlib') ? 'true' : 'false' ?>
- ,enabledPlugins: ['MESSENGER_CHAT']
+ ,enabledPlugins: ['MESSENGER_CHAT','INSTAGRAM_SHOP']
  ,popupOrigin: 'https://www.facebook.com/ads/dia'
  ,feedWasDisabled: '<?php echo $this->enableFeedNOW() ?>'
  ,feedWritePermissionError: '<?php echo $this->checkFeedWriteError() ?>'
