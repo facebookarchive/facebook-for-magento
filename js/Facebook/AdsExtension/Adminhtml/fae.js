@@ -277,6 +277,10 @@ var FAEFlowContainer = React.createClass({
       'Your store is connected to Facebook. Store ID: ',
       this.state.diaSettingId,
     ) : '';
+    var loader = document.getElementById('fae-loader');
+    if (loader) {
+      loader.hidden = true;
+    }
 
     // Add store options
     const options = [];

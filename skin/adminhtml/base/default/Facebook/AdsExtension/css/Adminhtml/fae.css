@@ -40,6 +40,10 @@
   line-height: 1.28;
 }
 
+#fae-flow {
+  padding-bottom: 5px;
+}
+
 #facebook-header td {
     padding: 0;
     margin: 0;
@@ -54,6 +58,34 @@
   margin: 10px 10px 7px 20px;
   width: 100px;
   height: 24px;
+}
+
+#fae-loader {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 280px;
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#fae-debug-mode-text {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+#fae-debug-mode-link {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 

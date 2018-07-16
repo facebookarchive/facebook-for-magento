@@ -1,4 +1,27 @@
 <script>
+// Debug Mode
+setTimeout(
+  function() {
+    if (!window.facebookAdsExtensionConfig || !window.facebookAdsExtensionConfig.feedPrepared || !window.facebookAdsExtensionConfig.feedPrepared.samples) {
+      var div = document.createElement("DIV");
+      div.id = "fae-debug-mode-text";
+      var a = document.createElement("A");
+      a.href=window.facebookAdsExtensionAjax.debug;
+      var t2 = document.createTextNode("The extension failed to load due to a critical error. Please enter Debug Mode to understand the cause.");
+      var body = document.getElementById('fae-flow');
+      var loader = document.getElementById('fae-loader');
+      loader.hidden = true;
+      div.appendChild(t2);
+      a.appendChild(document.createTextNode("Enter Debug Mode"))
+      var div2 = document.createElement("DIV").appendChild(a);
+      div2.id = "fae-debug-mode-link";
+      body.appendChild(div);
+      body.appendChild(div2);
+    }
+  },
+  10000
+);
+
 window.facebookAdsExtensionAjax = {
   setDiaSettingId: '<?php echo $this->getDiaSettingIdAjaxRoute() ?>'
  ,setPixelId: '<?php echo $this->getPixelAjaxRoute() ?>'
@@ -15,7 +38,9 @@ window.facebookAdsExtensionAjax = {
       <tr><td><i class='logo'></i></td>
       </tbody></table>
   </div>
-  <div id="fae-flow"></div>
+  <div id="fae-flow">
+    <div class="fae-loader" id="fae-loader"></div>
+  </div>
 </div>
 
 <script>
@@ -71,4 +96,5 @@ window.facebookAdsExtensionConfig = {
 ?>
   }
 };
+// I used this to test : window.facebookAdsExtensionConfig = null; will remove before landing.
 </script>
