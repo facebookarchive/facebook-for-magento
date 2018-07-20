@@ -7,7 +7,7 @@
              template="facebook_ads_extension/head.phtml" />
       <block type="Facebook_AdsExtension/addToCart"
              name="facebook_ads_extension.addtocart"
-             template="facebook_ads_extension/addtocart.phtml" />"
+             template="facebook_ads_extension/addtocart.phtml" />
     </reference>
   </default>
   <cms_index_index>
