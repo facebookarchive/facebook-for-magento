@@ -18,7 +18,13 @@ class Facebook_AdsExtension_Adminhtml_FbdebugController
   extends Mage_Adminhtml_Controller_Action {
 
   public function indexAction() {
-    $this->ajaxAction();
+    if ($this->getRequest()->getParam('logs')) {
+      $this->ajaxAction();
+    } else {
+      $this->loadLayout();
+      $this->_setActiveMenu('facebook_ads_extension');
+      $this->renderLayout();
+    }
   }
 
   public function ajaxAction() {

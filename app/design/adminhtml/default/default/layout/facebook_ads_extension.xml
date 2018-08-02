@@ -33,4 +33,34 @@
              template="facebook_ads_extension/fae_index.phtml" />
     </reference>
   </adminhtml_fbmain_index>
+  <adminhtml_fbdebug_index>
+    <reference name="head">
+      <action method="setTitle" translate="title">
+        <title>Facebook Ads Extension : Debug Mode</title>
+      </action>
+      <action method="addJs">
+        <script>Facebook/AdsExtension/Adminhtml/lib/react.min.js</script>
+      </action>
+      <action method="addJs">
+        <script>Facebook/AdsExtension/Adminhtml/lib/react-dom.min.js</script>
+      </action>
+      <action method="addJs">
+        <script>Facebook/AdsExtension/Adminhtml/lib/Modal.js</script>
+      </action>
+      <action method="addJs">
+        <script>Facebook/AdsExtension/Adminhtml/lib/utils.js</script>
+      </action>
+      <action method="addJs">
+        <script>Facebook/AdsExtension/Adminhtml/lib/debug.js</script>
+      </action>
+      <action method="addCss">
+        <stylesheet>Facebook/AdsExtension/css/Adminhtml/fae.css</stylesheet>
+      </action>
+    </reference>
+    <reference name="content">
+      <block type="Facebook_AdsExtension/Adminhtml_diaindex"
+             name="Facebook_AdsExtension.FaeIndex"
+             template="facebook_ads_extension/fae_debug.phtml" />
+    </reference>
+  </adminhtml_fbdebug_index>
 </layout>
