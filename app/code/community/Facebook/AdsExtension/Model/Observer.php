@@ -36,7 +36,22 @@ class Facebook_AdsExtension_Model_Observer {
 
   public function addToCart($observer) {
     if (!session_id()) { return; }
-    $productId = $observer->getProduct()->getId();
+    $product = $observer->getProduct();
+    $productId = $product->getId();
+
+    // If we added an invisible product, add the parent instead otherwise
+    // the add to cart pixel fire won't match.
+    if (
+      $product->getVisibility() == Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE &&
+      $product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE
+    ) {
+      $parentIds = Mage::getModel('catalog/product_type_configurable')
+        ->getParentIdsByChild($productId);
+      if (!empty($parentIds) && is_array($parentIds) && $parentIds[0]) {
+        $productId = $parentIds[0];
+      }
+    }
+
     $session = Mage::getSingleton("core/session",  array("name"=>"frontend"));
     $addToCartArray = $session->getData("fbms_add_to_cart") ?: array();
     $addToCartArray[] = $productId;
