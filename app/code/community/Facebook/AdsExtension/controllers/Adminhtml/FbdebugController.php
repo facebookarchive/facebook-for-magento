@@ -14,6 +14,12 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once __DIR__.'/../../../../Facebook_AdsExtension_lib_fb.php';
 }
 
+if (file_exists(__DIR__.'/FBProductFeedSamples.php')) {
+  include_once 'FBProductFeedSamples.php';
+} else {
+  include_once 'Facebook_AdsExtension_Model_FBProductFeedSamples.php';
+}
+
 class Facebook_AdsExtension_Adminhtml_FbdebugController
   extends Mage_Adminhtml_Controller_Action {
 
@@ -27,13 +33,47 @@ class Facebook_AdsExtension_Adminhtml_FbdebugController
     }
   }
 
+  private function ajaxSend($response) {
+    $this->getResponse()->setHeader('Content-type', 'application/json');
+    $this->getResponse()->setBody(
+      Mage::helper('core')->jsonEncode($response));
+  }
+
+  private function send500($response) {
+    $this->getResponse()->setHttpResponseCode(500);
+    $this->getResponse()->setHeader('Content-type', 'html');
+    $this->getResponse()->setBody(
+      Mage::helper('core')->jsonEncode($response));
+  }
+
   public function ajaxAction() {
-    $this->doQuerylogs($this->getRequest());
+    if ($this->getRequest()->getParam('debugfeedsamples')) {
+      FacebookAdsExtension::setDebugMode(true);
+      FacebookAdsExtension::setErrorLogging();
+      $samples = new FBProductFeedSamples();
+      try {
+        $samples = $samples->generate();
+        $this->getResponse()->setBody($samples);
+        FacebookAdsExtension::setDebugMode(false);
+        $this->ajaxSend(array(
+          'success' => true,
+          'samples' => $samples,
+        ));
+      } catch (Throwable $e) {
+        $message = $e->getMessage()." : ".$e->getTraceAsString();
+        Mage::log($message, Zend_Log::EMERG, FacebookAdsExtension::DEBUGMODE_LOGFILE);
+        $this->send500($message);
+      }
+    } else {
+      $this->doQuerylogs($this->getRequest());
+    }
   }
 
   private function doQuerylogs($request) {
     $this->getResponse()->setHeader('Content-type', 'text');
-    if ($this->getRequest()->getParam('exception')) {
+    if ($this->getRequest()->getParam('debugmode')) {
+      $this->getResponse()->setBody(FacebookAdsExtension::getDebugModeLogs());
+    } else if ($this->getRequest()->getParam('exception')) {
       $this->getResponse()->setBody(FacebookAdsExtension::getFeedException());
     } else if ($this->getRequest()->getParam('feed')) {
       $this->getResponse()->setBody(FacebookAdsExtension::getFeedLogs());

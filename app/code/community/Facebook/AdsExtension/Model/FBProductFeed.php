@@ -185,9 +185,9 @@ class FBProductFeed {
       mb_substr($product_link, 0, 4) === 'http';
   }
 
-  protected function buildProductEntry($product, $product_name) {
+  protected function buildProductEntry($product, $product_name, $stock = null) {
     $items = array();
-    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
+    $stock = ($stock) ? $stock : Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
     $title = $product_name ? $product_name : $product->getName();
 
     $items[self::ATTR_ID] = $this->buildProductAttr(self::ATTR_ID, $product->getId());

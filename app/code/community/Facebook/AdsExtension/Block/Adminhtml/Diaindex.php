@@ -81,6 +81,11 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
       'adminhtml/fbdebug/index');
   }
 
+  public function getDebugAjaxRoute() {
+    return Mage::helper('adminhtml')->getUrl(
+      'adminhtml/fbdebug/ajax');
+  }
+
   public function determineFbTimeZone($magentoTimezone) {
     return $this->getPixelindex()->determineFbTimeZone();
   }
@@ -107,6 +112,7 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
   public function fetchFeedSamples() {
     $ob = Mage::getModel('Facebook_AdsExtension/observer');
     $obins = new $ob;
+    FacebookAdsExtension::setErrorLogging();
     try {
       $productSamples = $obins->generateFacebookProductSamples();
       return $productSamples;

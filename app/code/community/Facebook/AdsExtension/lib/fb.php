@@ -14,6 +14,8 @@ if (!class_exists('FacebookAdsExtension', false)) {
     const LOGFILE = 'facebook_ads_extension.log';
     const FEED_LOGFILE = 'facebook_adstoolbox_product_feed.log';
     const FEED_EXCEPTION = 'facebook_product_feed_exception.log';
+    const DEBUGMODE_LOGFILE = 'facebook_ads_extension_debug.log';
+    public static $debug_mode = false;
 
     public static function version() {
       return Mage::getConfig()->getModuleConfig("Facebook_AdsExtension")->version;
@@ -53,6 +55,38 @@ if (!class_exists('FacebookAdsExtension', false)) {
 
     public static function getLogs() {
       $log_file_path = Mage::getBaseDir('log').'/'.self::LOGFILE;
+      return file_get_contents($log_file_path);
+    }
+
+    public static function setDebugMode($mode) {
+        FacebookAdsExtension::$debug_mode = $mode;
+    }
+
+    public static function setErrorLogging() {
+      register_shutdown_function ( function() {
+        $errfile = "unknown file";
+        $errstr  = "shutdown";
+        $errno   = E_CORE_ERROR;
+        $errline = 0;
+
+        $error = error_get_last();
+
+        if( $error !== NULL) {
+          $errno   = $error["type"];
+          $errfile = $error["file"];
+          $errline = $error["line"];
+          $errstr  = $error["message"];
+          $log = $errno.":".$errstr." @ ".$errfile." L".$errline;
+          Mage::log('ERROR'.$log, Zend_Log::INFO, FacebookAdsExtension::FEED_EXCEPTION);
+          if (FacebookAdsExtension::$debug_mode) {
+            Mage::log('ERROR'.$log, Zend_Log::EMERG, FacebookAdsExtension::DEBUGMODE_LOGFILE);
+          }
+        }
+      } );
+    }
+
+    public static function getDebugModeLogs() {
+      $log_file_path = Mage::getBaseDir('log').'/'.self::DEBUGMODE_LOGFILE;
       return file_get_contents($log_file_path);
     }
 
@@ -322,5 +356,7 @@ if (!class_exists('FacebookAdsExtension', false)) {
         self::$fbTimezones[$fb_timezone] :
         self::$fbTimezones['unknown'];
     }
+
+
   }
 }
