@@ -1,6 +1,6 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
-2018-07-30 version 2.5.1
+2018-08-10 version 2.6.0
 - Introduce Debug Mode
 - Fix AddToCart product matching error.
 
