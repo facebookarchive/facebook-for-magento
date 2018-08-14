@@ -76,8 +76,8 @@ EOD;
     }
   }
 
-  protected function buildProductEntry($product, $product_name) {
-    $items = array_values(parent::buildProductEntry($product, $product_name));
+  protected function buildProductEntry($product, $product_name, $stock = NULL) {
+    $items = array_values(parent::buildProductEntry($product, $product_name, $stock));
     array_unshift($items, "<entry>");
     $items[] = "</entry>";
     return implode("\n", array_filter(array_values($items)));
