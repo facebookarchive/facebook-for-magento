@@ -131,8 +131,8 @@ class FBProductFeedSamples extends FBProductFeed {
     }
     $product2 = new FBDebugProduct($product, $count, $this);
     $this->logd("Fetch Stock Item of Product $count");
-    $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
+    $this->stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
     $this->logd("Build Product Entry of Product $count");
-    return $this->buildProductEntry($product2, $name, $stock);
+    return $this->buildProductEntry($product2, $name);
   }
 }
