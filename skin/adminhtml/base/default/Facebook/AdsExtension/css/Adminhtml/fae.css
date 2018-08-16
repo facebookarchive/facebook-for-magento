@@ -95,6 +95,12 @@
   padding-bottom: 5px;
 }
 
+div.fae-upgrade-notice {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(126,129,136);
+}
+
 div.red-text {
   color: red;
 }

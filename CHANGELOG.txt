@@ -3,6 +3,7 @@
 2018-08-10 version 2.6.0
 - Introduce Debug Mode
 - Fix AddToCart product matching error.
+- A Notice will now appear in the config page when a new version is available.
 
 2018-06-01 version 2.5.0
 - UI Redesign.

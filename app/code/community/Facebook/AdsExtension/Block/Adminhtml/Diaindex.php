@@ -86,6 +86,11 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
       'adminhtml/fbdebug/ajax');
   }
 
+  public function getUpgradeAjaxRoute() {
+    return Mage::helper('adminhtml')->getUrl(
+      'adminhtml/fbupgrade/ajax');
+  }
+
   public function determineFbTimeZone($magentoTimezone) {
     return $this->getPixelindex()->determineFbTimeZone();
   }

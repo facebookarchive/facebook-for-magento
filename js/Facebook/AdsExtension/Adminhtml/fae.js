@@ -16,6 +16,7 @@ var FAEFlowContainer = React.createClass({
   popupWindow: null,
   modalMessage: null,
 
+
   getInitialState: function getInitialState() {
     return {
       diaSettingId: window.facebookAdsExtensionConfig.diaSettingId,
@@ -24,7 +25,8 @@ var FAEFlowContainer = React.createClass({
         null :
         window.facebookAdsExtensionConfig.feedPrepared.samples,
       showAdvancedOptions: false,
-      showModal: false
+      showModal: false,
+      upgradeUrl: false,
     };
   },
   bindMessageEvents: function bindMessageEvents(callback) {
@@ -218,7 +220,21 @@ var FAEFlowContainer = React.createClass({
     this.setState({ showModal: false });
   },
   componentDidMount: function componentDidMount() {
+    var _this = this;
     this.bindMessageEvents(this.onEvent);
+    new Ajax.Request(window.facebookAdsExtensionAjax.upgrade, {
+      parameters: {},
+      onSuccess: function onSuccess(result) {
+        var response = result.responseJSON;
+        console.log(result);
+        if (response && response.upgrade_needed) {
+          _this.setState({ upgradeUrl: response.url });
+        }
+      },
+      onFailure: function onFailure(result) {
+        console.log("Failed to reach Upgrade URL on GitHub", result);
+      },
+    });
   },
   selectorOnChange: function selectorOnChange() {
     var sel = document.getElementById('fbStoreSelector');
@@ -358,6 +374,21 @@ var FAEFlowContainer = React.createClass({
       return this.displayError(this.state.exceptionTrace);
     }
     var hrElement = React.createElement('hr', {className:'fae-hr'}, null);
+    var upgradeNotice = (this.state.upgradeUrl) ?
+      React.createElement(
+        'div',
+        { className: 'fae-upgrade-notice'},
+        'A newer version of this plugin is available. To download it, ',
+        React.createElement(
+          'a',
+          {
+            href: this.state.upgradeUrl,
+            target: '_blank'
+          },
+          'go to GitHub.',
+        ),
+      )
+    : null;
 
     return React.createElement(
       'div',
@@ -425,6 +456,7 @@ var FAEFlowContainer = React.createClass({
           null,
           'Settings',
         ),
+        upgradeNotice,
         currentDiaSettingId,
         React.createElement(
           'div',
@@ -446,7 +478,7 @@ var FAEFlowContainer = React.createClass({
           hrElement,
       ),
       advancedOptionsLink,
-      advancedOptions
+      advancedOptions,
     );
    } catch (err) {
      console.log(err);
