@@ -14,12 +14,6 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once __DIR__.'/../../../../Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/../../Model/FBProductFeedSamples.php')) {
-  include_once __DIR__.'/../../Model/FBProductFeedSamples.php';
-} else {
-  include_once 'Facebook_AdsExtension_Model_FBProductFeedSamples.php';
-}
-
 class Facebook_AdsExtension_Adminhtml_FbdebugController
   extends Mage_Adminhtml_Controller_Action {
 
@@ -50,7 +44,7 @@ class Facebook_AdsExtension_Adminhtml_FbdebugController
     if ($this->getRequest()->getParam('debugfeedsamples')) {
       FacebookAdsExtension::setDebugMode(true);
       FacebookAdsExtension::setErrorLogging();
-      $samples = new FBProductFeedSamples();
+      $samples = Mage::getModel('Facebook_AdsExtension/fBProductFeedSamples');
       try {
         $samples = $samples->generate();
         FacebookAdsExtension::setDebugMode(false);

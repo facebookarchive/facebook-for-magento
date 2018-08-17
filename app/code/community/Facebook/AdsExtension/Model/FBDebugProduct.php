@@ -15,7 +15,7 @@ if (file_exists(__DIR__.'/../lib/fb.php')) {
 }
 
 // Wrapper class for Magento's Product for Debugging
-class FBDebugProduct {
+class Facebook_AdsExtension_Model_FBDebugProduct {
   public function __construct($product, $count, $debug_origin = null) {
     $this->product = $product;
     $this->name = "Product $count";

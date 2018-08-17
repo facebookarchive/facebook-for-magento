@@ -14,13 +14,7 @@ if (file_exists(__DIR__.'/../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/FBProductFeed.php')) {
-  include_once 'FBProductFeed.php';
-} else {
-  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
-}
-
-class FBProductFeedSamples extends FBProductFeed {
+class Facebook_AdsExtension_Model_FBProductFeedSamples extends Facebook_AdsExtension_Model_FBProductFeed {
   public $debug_mode = false;
    // TODO : Print stacktrace in verbose mode on every log line.
   public $verbose = false;
@@ -130,7 +124,7 @@ class FBProductFeedSamples extends FBProductFeed {
     } else {
       include_once 'Facebook_AdsExtension_Model_FBDebugProduct.php';
     }
-    $product2 = new FBDebugProduct($product, $count, $this);
+    $product2 = Mage::getModel('Facebook_AdsExtension/fBProductFeed', [$product, $count, $this]);
     $this->logd("Fetch Stock Item of Product $count");
     $this->stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
     $this->logd("Build Product Entry of Product $count");

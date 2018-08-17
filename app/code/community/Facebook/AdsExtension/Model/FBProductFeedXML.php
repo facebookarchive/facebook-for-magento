@@ -14,13 +14,7 @@ if (file_exists(__DIR__.'/../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/FBProductFeed.php')) {
-  include_once 'FBProductFeed.php';
-} else {
-  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
-}
-
-class FBProductFeedXML extends FBProductFeed {
+class Facebook_AdsExtension_Model_FBProductFeedXML extends Facebook_AdsExtension_Model_FBProductFeed {
 
   const XML_FEED_FILENAME = 'facebook_adstoolbox_product_feed.xml';
 

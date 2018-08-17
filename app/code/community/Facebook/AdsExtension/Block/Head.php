@@ -8,11 +8,5 @@
  * of patent rights can be found in the PATENTS file in the code directory.
  */
 
-if (file_exists(__DIR__.'/common.php')) {
-  include_once 'common.php';
-} else {
-  include_once 'Facebook_AdsExtension_Block_common.php';
-}
-
 class Facebook_AdsExtension_Block_Head extends Facebook_AdsExtension_Block_Common {
 }
