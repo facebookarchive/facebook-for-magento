@@ -53,7 +53,6 @@ class Facebook_AdsExtension_Adminhtml_FbdebugController
       $samples = new FBProductFeedSamples();
       try {
         $samples = $samples->generate();
-        $this->getResponse()->setBody($samples);
         FacebookAdsExtension::setDebugMode(false);
         $this->ajaxSend(array(
           'success' => true,
