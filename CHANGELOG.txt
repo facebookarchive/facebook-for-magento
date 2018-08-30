@@ -1,5 +1,10 @@
 *** Facebook Ads Extension For Magento Changelog ***
 
+2018-08-31 version 2.6.1
+- Fix malformed include statement when compilation mode is enabled
+- Fix warning when variable is undefined
+- Remove unnecessary statement that was causing warnings/errors in debug mode.
+
 2018-08-10 version 2.6.0
 - Introduce Debug Mode
 - Fix AddToCart product matching error.
