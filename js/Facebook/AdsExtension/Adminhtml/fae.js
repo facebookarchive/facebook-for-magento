@@ -398,7 +398,7 @@ var FAEFlowContainer = React.createClass({
         'h1',
         null,
         (this.state.diaSettingId) ?
-          'Reach the right people and sell more products' :
+          'Reach The Right People and Sell More Online' :
           'Grow your business on Facebook',
       ),
       React.createElement(
@@ -450,33 +450,56 @@ var FAEFlowContainer = React.createClass({
       hrElement,
       React.createElement(
         'div',
-        { className: 'settings', hidden: !this.state.diaSettingId},
-        React.createElement(
-          'h1',
-          null,
-          'Settings',
-        ),
-        upgradeNotice,
-        currentDiaSettingId,
+        { className: 'settings-container', hidden: !this.state.diaSettingId },
         React.createElement(
           'div',
-          null,
-            (this.state.diaSettingId) ? React.createElement(
-              'button',
-              { className: 'small', onClick: this.launchDiaWizard, title: 'Manage Settings'},
-              'Settings'
-            )
-            :
-            React.createElement(
-              'h2',
-              {style: {color: 'red'}},
-              'Please enable write permissions in the ',
-              feedWritePermissionError,
-              ' directory to use this extension.'
-            )
+          { className: 'settings-section', hidden: !this.state.diaSettingId },
+          React.createElement(
+            'h1',
+            null,
+            'Add Ways for People to Shop'
           ),
-          hrElement,
-      ),
+          React.createElement(
+            'h2',
+            null,
+            'Connect your business with features on Instagram, Messenger and more.'
+          ),
+          React.createElement(
+            'button',
+            { className: 'small', onClick: this.launchDiaWizard, title: 'Connect'},
+            'Connect'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'settings-section', hidden: !this.state.diaSettingId},
+          React.createElement(
+            'h1',
+            null,
+            'Settings',
+          ),
+          upgradeNotice,
+          currentDiaSettingId,
+          React.createElement(
+            'div',
+            null,
+              (this.state.diaSettingId) ? React.createElement(
+                'button',
+                { className: 'small', onClick: this.launchDiaWizard, title: 'Manage Settings'},
+                'Settings'
+              )
+              :
+              React.createElement(
+                'h2',
+                {style: {color: 'red'}},
+                'Please enable write permissions in the ',
+                feedWritePermissionError,
+                ' directory to use this extension.'
+              )
+            ),
+            hrElement,
+          )
+        ),
       advancedOptionsLink,
       advancedOptions,
     );
