@@ -124,7 +124,7 @@ class Facebook_AdsExtension_Model_FBProductFeedSamples extends Facebook_AdsExten
     } else {
       include_once 'Facebook_AdsExtension_Model_FBDebugProduct.php';
     }
-    $product2 = Mage::getModel('Facebook_AdsExtension/fBProductFeed', [$product, $count, $this]);
+    $product2 = new Facebook_AdsExtension_Model_FBDebugProduct($product, $count, $this);
     $this->logd("Fetch Stock Item of Product $count");
     $this->stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
     $this->logd("Build Product Entry of Product $count");
