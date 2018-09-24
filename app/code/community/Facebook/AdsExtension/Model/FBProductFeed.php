@@ -746,7 +746,12 @@ class FBProductFeed {
     if ($price === null) {
       $price = $product->getData('special_price');
     }
-    return $this->taxHelper->getPrice($product, $price);
+    $store = Mage::app()->getStore(1);
+    $taxCalculation = Mage::getModel('tax/calculation');
+    $request = $taxCalculation->getRateRequest(null, null, null, $store);
+    $taxClassId = $product->getTaxClassId();
+    $percent = $taxCalculation->getRate($request->setProductClassId($taxClassId));
+    return $this->taxHelper->getPrice($product, $price) + (($this->taxHelper->getPrice($product, $price) * $percent) / 100);
   }
 
   private function stripCurrencySymbol($price) {
