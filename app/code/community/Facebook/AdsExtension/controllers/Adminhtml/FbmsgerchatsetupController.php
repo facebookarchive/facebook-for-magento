@@ -17,6 +17,8 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
 class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
   extends Mage_Adminhtml_Controller_Action {
 
+  const PREFIX = 'facebook_ads_toolbox/messengerchat/';
+
   public function indexAction() {
     $this->loadLayout();
     $this->renderLayout();
@@ -35,7 +37,7 @@ class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
           $request->getParam('is_messenger_chat_plugin_enabled');
         if ($is_messenger_chat_plugin_enabled) {
           Mage::getModel('core/config')->saveConfig(
-            'facebook_ads_toolbox/messengerchat/enabled',
+            self::PREFIX.'enabled',
             $is_messenger_chat_plugin_enabled === 'true' ? '1' : '0');
         }
 
@@ -49,11 +51,33 @@ class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
         $page_id = $request->getParam('page_id');
         if ($page_id) {
           Mage::getModel('core/config')->saveConfig(
-            'facebook_ads_toolbox/messengerchat/pageid',
+            self::PREFIX.'pageid',
             $page_id);
         }
 
-        // TODO:(liyuhk) save other setups of msger chat if avaliable
+        $customization = $request->getParam('customization');
+        if ($customization) {
+          $customization_obj = json_decode($customization);
+          if ($customization_obj) {
+            if (isset($customization_obj->greetingTextCode)) {
+              Mage::getModel('core/config')->saveConfig(
+                self::PREFIX.'greeting_text_code',
+                $customization_obj->greetingTextCode);
+            }
+
+            if (isset($customization_obj->locale)) {
+              Mage::getModel('core/config')->saveConfig(
+                self::PREFIX.'locale',
+                $customization_obj->locale);
+            }
+
+            if (isset($customization_obj->themeColorCode)) {
+              Mage::getModel('core/config')->saveConfig(
+                self::PREFIX.'theme_color_code',
+                $customization_obj->themeColorCode);
+            }
+          }
+        }
 
         $response['success'] = true;
         FacebookAdsExtension::log("Messenger chat setup request received and saved!");

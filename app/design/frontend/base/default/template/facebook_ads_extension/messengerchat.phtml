@@ -14,7 +14,7 @@
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     js.src = "https://connect.facebook.net/<?php echo $this->getLocale() ?>/sdk/xfbml.customerchat.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
@@ -22,5 +22,7 @@
   class="fb-customerchat"
   attribution="fbe_magento"
   page_id="<?php echo $this->getFacebookPageID() ?>"
+  <?php echo $this->getThemeColorAttr() ?>
+  <?php echo $this->getLoggedInOutGreetingAttr() ?>
 />
 <?php }?>

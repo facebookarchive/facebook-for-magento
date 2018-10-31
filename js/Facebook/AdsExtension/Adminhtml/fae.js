@@ -126,6 +126,9 @@ var FAEFlowContainer = React.createClass({
       },
 
       'set msger chat': function setMsgerChatSetup(params) {
+        if (params.customization) {
+          params.customization = JSON.stringify(params.customization);
+        }
         new Ajax.Request(window.facebookAdsExtensionAjax.setMsgerChatSetup, {
           parameters: params,
           onSuccess: function onSuccess(transport) {
