@@ -296,7 +296,7 @@ class FBProductFeed {
     $attribute_table = Mage::getModel('eav/entity_attribute_source_table');
     $attribute_table->setAttribute($attribute);
     $gender = $attribute_table->getOptionText($gender_id);
-    $gender = trim(strtolower($gender));
+    $gender = (is_array($gender)) ? '' : trim(strtolower($gender));
 
     if (!$gender) {
       return $gender;
