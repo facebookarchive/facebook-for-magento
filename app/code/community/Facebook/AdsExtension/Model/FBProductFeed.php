@@ -239,7 +239,7 @@ class FBProductFeed {
     $items[self::ATTR_CONDITION] = ($this->isValidCondition($condition)) ? $condition : $this->defaultCondition();
 
     $items[self::ATTR_AVAILABILITY] = $this->buildProductAttr(self::ATTR_AVAILABILITY,
-      $stock->getIsInStock() ? 'in stock' : 'out of stock');
+      $stock->getIsInStock() && $product->isAvailable() ? 'in stock' : 'out of stock');
 
     $price = Mage::getModel('directory/currency')->formatPrecision(
       $this->getProductPrice($product),
