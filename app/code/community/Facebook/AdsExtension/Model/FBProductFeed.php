@@ -189,6 +189,10 @@ class FBProductFeed {
     $items = array();
     $stock = isset($this->stock) ? $this->stock : Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
     $title = $product_name ? $product_name : $product->getName();
+    $is_in_stock = $stock->getIsInStock() && $product->isAvailable();
+    if ($this->dont_sync_out_of_stock && !$is_in_stock) {
+      return array();
+    }
 
     $items[self::ATTR_ID] = $this->buildProductAttr(self::ATTR_ID, $product->getId());
     $this->dedup_ids[$product->getId()] = true;
@@ -239,7 +243,7 @@ class FBProductFeed {
     $items[self::ATTR_CONDITION] = ($this->isValidCondition($condition)) ? $condition : $this->defaultCondition();
 
     $items[self::ATTR_AVAILABILITY] = $this->buildProductAttr(self::ATTR_AVAILABILITY,
-      $stock->getIsInStock() && $product->isAvailable() ? 'in stock' : 'out of stock');
+      $is_in_stock ? 'in stock' : 'out of stock');
 
     $price = Mage::getModel('directory/currency')->formatPrecision(
       $this->getProductPrice($product),
@@ -364,6 +368,8 @@ class FBProductFeed {
     $io->streamWrite($this->buildHeader()."\n");
 
     $this->store_id = FacebookAdsExtension::getDefaultStoreId();
+    $this->dont_sync_out_of_stock =
+      Mage::getStoreConfig('facebook_ads_toolbox/dia/dont_sync_out_of_stock');
 
     $collection = Mage::getModel('catalog/product')->getCollection()
       ->addStoreFilter($this->store_id);
@@ -440,7 +446,9 @@ class FBProductFeed {
               $product_id &&
               !isset($this->dedup_ids[$product_id])) {
             $e = $this->buildProductEntry($product, $product_name);
-            $io->streamWrite($e."\n");
+            if (!empty($e)) {
+              $io->streamWrite($e."\n");
+            }
           } else {
             $skip_count++;
           }
@@ -487,6 +495,7 @@ class FBProductFeed {
     $io->streamOpen('feed_dryrun.txt');
 
     $this->store_id = FacebookAdsExtension::getDefaultStoreId();
+    $this->dont_sync_out_of_stock = false;
 
     $collection = Mage::getModel('catalog/product')->getCollection();
     $total_number_of_products = $collection->getSize();

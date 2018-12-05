@@ -20,6 +20,7 @@ var FAEFlowContainer = React.createClass({
   getInitialState: function getInitialState() {
     return {
       diaSettingId: window.facebookAdsExtensionConfig.diaSettingId,
+      dontSyncOutOfStock: window.facebookAdsExtensionConfig.dontSyncOutOfStock,
       exceptionTrace:
         (Array.isArray(window.facebookAdsExtensionConfig.feedPrepared.samples)) ?
         null :
@@ -50,6 +51,22 @@ var FAEFlowContainer = React.createClass({
       this.modalMessage = msg;
       this.setState({ showModal: true });
     }
+  },
+  _toggleDontSyncOutOfStock: function _toggleDontSyncOutOFStock() {
+    var state_bool = !this.state.dontSyncOutOfStock;
+    this.setState({dontSyncOutOfStock: state_bool});
+    new Ajax.Request(window.facebookAdsExtensionAjax.setOption, {
+      parameters: {
+                    'option' : 'dont_sync_out_of_stock',
+                    'option_value' : state_bool ? 1 : 0
+                  },
+      onSuccess: function onSuccess(transport) {
+        console.log("Set Setting, out of stock");
+      },
+      onFailure: function onFailure() {
+        console.error("Failed to set setting out of stock");
+      }
+    });
   },
 
   // Read the Facebook Ads Extension Developer Doc for an overview of this
@@ -344,10 +361,31 @@ var FAEFlowContainer = React.createClass({
       {onClick: this.showAdvancedOptions},
       advancedOptionsText
     );
+    var syncOutOfStock = React.createElement(
+     'input',
+     {
+        type: 'checkbox',
+        defaultChecked: this.state.dontSyncOutOfStock,
+        onChange: this._toggleDontSyncOutOfStock,
+     },
+     React.createElement(
+      'span',
+      {style: {whiteSpace: "nowrap", fontSize: "13px"}},
+      ' Do Not Sync Out Of Stock Items with FB',
+     ),
+    );
 
     var advancedOptions = React.createElement(
       'div',
       {id: 'fbAdvancedOptions', style: {display: 'none'}},
+      React.createElement(
+        'div',
+        {title: 'Check this to prevent items from syncing with FB if they ' +
+               'are marked out of stock. Note that items that go out of stock ' +
+               'will be deleted from Facebook if this option is set.'},
+        syncOutOfStock,
+      ),
+      React.createElement('div', {style: {padding: '4px'}}),
       React.createElement(
         'h2',
         null,

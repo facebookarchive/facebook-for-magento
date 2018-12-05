@@ -86,6 +86,11 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
       'adminhtml/fbdebug/ajax');
   }
 
+  public function getSetOptionAjaxRoute() {
+    return Mage::helper('adminhtml')->getUrl(
+      'adminhtml/fbsetoption/ajax');
+  }
+
   public function getUpgradeAjaxRoute() {
     return Mage::helper('adminhtml')->getUrl(
       'adminhtml/fbupgrade/ajax');
@@ -175,5 +180,11 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
     $pixel_install_time =
       Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/install_time');
     return $pixel_install_time ?: '';
+  }
+
+  public function getFBOption($option) {
+    $option = preg_replace("/[^A-Za-z0-9\/_]/", '', $option);
+    $option_value = Mage::getStoreConfig('facebook_ads_toolbox/dia/'.$option);
+    return ($option_value) ? $option_value : 0;
   }
 }

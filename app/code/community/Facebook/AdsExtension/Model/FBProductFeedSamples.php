@@ -64,6 +64,7 @@ class FBProductFeedSamples extends FBProductFeed {
 
     $this->logd('get default store ID');
     $this->store_id = FacebookAdsExtension::getDefaultStoreId();
+    $this->dont_sync_out_of_stock = false;
 
     $results = array();
     $this->logd("load $MAX sample products from your store");

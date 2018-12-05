@@ -1,4 +1,12 @@
-*** Facebook Ads Extension For Magento Changelog ***
+*** Facebook Business Extension For Magento Changelog ***
+
+2018-12-05 version 2.6.2
+- Fix configurable product showing in stock when all simple products under it
+  are out of stock. (#6)
+- Add advanced option to not sync out of stock products to FB. (#70)
+- Fix PHP warning issue for products with multiple genders. (#99)
+- Messenger Chat Customization
+- Minor UI Adjustments
 
 2018-08-31 version 2.6.1
 - Fix malformed include statement when compilation mode is enabled

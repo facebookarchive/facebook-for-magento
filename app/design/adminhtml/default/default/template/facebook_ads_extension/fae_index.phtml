@@ -30,6 +30,7 @@ window.facebookAdsExtensionAjax = {
  ,setMsgerChatSetup: '<?php echo $this->getMsgerChatSetupAjaxRoute() ?>'
  ,debug: '<?php echo $this->getDebugRoute() ?>'
  ,upgrade: '<?php echo $this->getUpgradeAjaxRoute() ?>'
+ ,setOption: '<?php echo $this->getSetOptionAjaxRoute() ?>'
 };
 </script>
 
@@ -77,6 +78,7 @@ window.facebookAdsExtensionConfig = {
     ?>
  }
  ,defaultStoreId: '<?php echo $this->getSelectedStore() ?>'
+ ,dontSyncOutOfStock: <?php echo $this->getFBOption('dont_sync_out_of_stock') ?>
  ,stores: '<?php echo json_encode($this->getStores()) ?>'
 <?php if ($this->getDiaSettingId() != null) { ?>
  ,diaSettingId: <?php echo $this->getDiaSettingId() ?>
