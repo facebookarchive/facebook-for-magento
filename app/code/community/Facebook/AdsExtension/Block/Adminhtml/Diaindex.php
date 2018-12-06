@@ -8,18 +8,6 @@
  * of patent rights can be found in the PATENTS file in the code directory.
  */
 
-if (file_exists(__DIR__.'/Feedindex.php')) {
-  include_once 'Feedindex.php';
-} else {
-  include_once 'Facebook_AdsExtension_Block_Adminhtml_Feedindex.php';
-}
-
-if (file_exists(__DIR__.'/Pixelindex.php')) {
-  include_once 'Pixelindex.php';
-} else {
-  include_once 'Facebook_AdsExtension_Block_Adminhtml_Pixelindex.php';
-}
-
 if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once __DIR__.'/../../lib/fb.php';
 } else {
@@ -34,14 +22,14 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
 
   private function getPixelindex() {
     if ($this->pixelIndex == null) {
-      $this->pixelIndex = new Facebook_AdsExtension_Block_Adminhtml_Pixelindex();
+      $this->pixelIndex = Mage::getBlockSingleton('Facebook_AdsExtension/adminhtml_pixelindex');
     }
     return $this->pixelIndex;
   }
 
   private function getFeedindex() {
     if ($this->feedIndex == null) {
-      $this->feedIndex = new Facebook_AdsExtension_Block_Adminhtml_Feedindex();
+      $this->feedIndex = Mage::getBlockSingleton('Facebook_AdsExtension/adminhtml_feedindex');
     }
     return $this->feedIndex;
   }
@@ -121,10 +109,10 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
 
   public function fetchFeedSamples() {
     $ob = Mage::getModel('Facebook_AdsExtension/observer');
-    $obins = new $ob;
+
     FacebookAdsExtension::setErrorLogging();
     try {
-      $productSamples = $obins->generateFacebookProductSamples();
+      $productSamples = $ob->generateFacebookProductSamples();
       return $productSamples;
     } catch (Exception $e) {
       return $e->getMessage()." : ".$e->getTraceAsString();
@@ -148,7 +136,7 @@ class Facebook_AdsExtension_Block_Adminhtml_Diaindex
     $feed_setup = $this->getFeedIndex()->fetchFeedSetupEnabled();
     if (!$feed_setup) {
       Mage::getModel('core/config')->saveConfig(
-        FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
+          Facebook_AdsExtension_Model_FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
         true);
       return true;
     }

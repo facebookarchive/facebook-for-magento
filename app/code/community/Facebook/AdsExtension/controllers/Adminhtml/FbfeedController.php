@@ -14,14 +14,6 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once __DIR__.'/../../../../Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/../../Model/FBProductFeed.php')) {
-  include_once __DIR__.'/../../Model/FBProductFeed.php';
-} else if (file_exists(__DIR__.'/../../../../Facebook_AdsExtension_Model_FBProductFeed.php')) {
-  include_once __DIR__.'/../../../../Facebook_AdsExtension_Model_FBProductFeed.php';
-} else {
-  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
-}
-
 class Facebook_AdsExtension_Adminhtml_FbfeedController
   extends Mage_Adminhtml_Controller_Action {
 
@@ -83,13 +75,13 @@ class Facebook_AdsExtension_Adminhtml_FbfeedController
 
     if ($enabled) {
       Mage::getModel('core/config')->saveConfig(
-        FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
+          Facebook_AdsExtension_Model_FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_ENABLED,
         ($enabled === 'true'));
     }
 
     if ($format) {
       Mage::getModel('core/config')->saveConfig(
-        FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_FORMAT,
+          Facebook_AdsExtension_Model_FBProductFeed::PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_FORMAT,
         $format);
     }
 
@@ -102,11 +94,11 @@ class Facebook_AdsExtension_Adminhtml_FbfeedController
     $response = array(
       'success' => true,
     );
-    $logfile = Mage::getBaseDir('log').'/'.FBProductFeed::LOGFILE;
+    $logfile = Mage::getBaseDir('log'). DS .Facebook_AdsExtension_Model_FBProductFeed::LOGFILE;
     $fp = fopen($logfile, 'r');
     if (!$fp) {
       $response['lastrunlogs'] =
-        'Read '.FBProductFeed::LOGFILE.' error!';
+        'Read '.Facebook_AdsExtension_Model_FBProductFeed::LOGFILE.' error!';
       $this->ajaxSend($response);
       return;
     }

@@ -14,12 +14,6 @@ if (file_exists(__DIR__.'/../../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-if (file_exists(__DIR__.'/../../Model/FBProductFeed.php')) {
-  include_once __DIR__.'/../../Model/FBProductFeed.php';
-} else {
-  include_once 'Facebook_AdsExtension_Model_FBProductFeed.php';
-}
-
 class Facebook_AdsExtension_Block_Adminhtml_Feedindex
   extends Mage_Adminhtml_Block_Template {
 
@@ -43,12 +37,12 @@ class Facebook_AdsExtension_Block_Adminhtml_Feedindex
   }
 
   public function fetchFeedSetupEnabled() {
-    $setup = FBProductFeed::getCurrentSetup();
+    $setup = Facebook_AdsExtension_Model_FBProductFeed::getCurrentSetup();
     return $setup['enabled'];
   }
 
   public function fetchFeedSetupFormat() {
-    $setup = FBProductFeed::getCurrentSetup();
+    $setup = Facebook_AdsExtension_Model_FBProductFeed::getCurrentSetup();
     return $setup['format'];
   }
 }

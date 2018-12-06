@@ -14,7 +14,7 @@ if (file_exists(__DIR__.'/../lib/fb.php')) {
   include_once 'Facebook_AdsExtension_lib_fb.php';
 }
 
-class FBProductFeed {
+class Facebook_AdsExtension_Model_FBProductFeed {
 
   const ATTR_ID = 'id';
   const ATTR_TITLE = 'title';
