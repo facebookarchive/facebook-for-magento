@@ -63,11 +63,11 @@ window.test.feedformat = '<?php echo $this->fetchFeedSetupFormat() ?>';
 </script>
 
 <script>
-window.test.totalVisibleProducts: <?php echo FacebookAdsExtension::getTotalVisibleProducts($this->getSelectedStore())?>;
+window.test.totalVisibleProducts =  <?php echo FacebookAdsExtension::getTotalVisibleProducts($this->getSelectedStore())?>;
 </script>
 
 <script>
-window.test.defaultStoreId: '<?php echo $this->getSelectedStore() ?>';
+window.test.defaultStoreId = '<?php echo $this->getSelectedStore() ?>';
 </script>
 
 <script>
@@ -75,13 +75,13 @@ window.test.stores = '<?php echo json_encode($this->getStores()) ?>';
 </script>
 
 <script>
-window.test.settingid = <?php echo $this->getDiaSettingId() ?>;
+window.test.settingid = '<?php echo $this->getDiaSettingId() ?>';
 </script>
 
 <script>
-window.test.feedUrl: '<?php echo $this->getFeedUrl() ?>';
+window.test.feedUrl = '<?php echo $this->getFeedUrl() ?>';
 </script>
 
 <script>
-window.test.feedPingUrl: '<?php echo FacebookAdsExtension::getFeedPingUrl() ?>';
+window.test.feedPingUrl = '<?php echo FacebookAdsExtension::getFeedPingUrl() ?>';
 </script>
