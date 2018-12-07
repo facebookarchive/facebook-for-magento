@@ -503,7 +503,7 @@ var FAEFlowContainer = React.createClass({
           React.createElement(
             'h2',
             null,
-            'Connect your business with features on Instagram, Messenger and more.'
+            'Connect your business with features such as Messenger and more.'
           ),
           React.createElement(
             'button',
