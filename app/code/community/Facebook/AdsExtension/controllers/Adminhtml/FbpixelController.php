@@ -28,7 +28,7 @@ class Facebook_AdsExtension_Adminhtml_FbpixelController
       );
       $pixel_id = $this->getRequest()->getParam('pixelId');
       $pixel_use_pii = $this->getRequest()->getParam('pixelUsePii');
-      if ($pixel_id && $this->isPixelIdValid($pixel_id)) {
+      if ($pixel_id && FacebookAdsExtension::isValidFBID($pixel_id)) {
         Mage::getModel('core/config')->saveConfig(
           'facebook_ads_toolbox/fbpixel/id',
           $pixel_id);
@@ -57,7 +57,4 @@ class Facebook_AdsExtension_Adminhtml_FbpixelController
     }
   }
 
-  public function isPixelIdValid($pixel_id) {
-    return preg_match("/^\d{1,20}$/", $pixel_id) !== 0;
-  }
 }

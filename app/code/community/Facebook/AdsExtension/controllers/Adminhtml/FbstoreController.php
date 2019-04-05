@@ -25,7 +25,7 @@ class Facebook_AdsExtension_Adminhtml_FbstoreController
   public function ajaxAction() {
     try {
       $store_id = $this->getRequest()->getParam('storeId');
-      if (is_numeric($store_id)) {
+      if ($store_id && is_numeric($store_id)) {
         Mage::getModel('core/config')->saveConfig(
           'facebook_ads_toolbox/fbstore/id',
           $store_id);

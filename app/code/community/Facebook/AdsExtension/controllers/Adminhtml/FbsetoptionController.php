@@ -30,14 +30,13 @@ class Facebook_AdsExtension_Adminhtml_FbsetoptionController
       $option_value = $this->getRequest()->getParam('option_value');
       $option = preg_replace("/[^A-Za-z0-9\/_]/", '', $option);
       if ($option !== null && strlen($option) < 100) {
+        // security tofix
         Mage::getModel('core/config')->saveConfig(
           'facebook_ads_toolbox/dia/'.$option,
-          $option_value
-        );
+          $option_value);
         $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(
-          Mage::helper('core')->jsonEncode(array('success' => true))
-        );
+          Mage::helper('core')->jsonEncode(array('success' => true)));
       } else {
         $this->reportFailure($option.':'.$option_value, null);
       }
@@ -54,7 +53,6 @@ class Facebook_AdsExtension_Adminhtml_FbsetoptionController
     FacebookAdsExtension::log("Set Option Failure : ".$msg." ".$err_string);
 
     Mage::throwException(
-      'Set Option failed:'.($err_string ?: 'null')
-    );
+      'Set Option failed:'.($err_string ?: 'null'));
   }
 }

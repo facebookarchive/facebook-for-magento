@@ -42,17 +42,21 @@ class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
         }
 
         $facebook_jssdk_version = $request->getParam('facebook_jssdk_version');
-        if ($facebook_jssdk_version) {
+        if ($facebook_jssdk_version && $this->isFacebookSDKVersionValid($facebook_jssdk_version)) {
           Mage::getModel('core/config')->saveConfig(
             'facebook_ads_toolbox/fbjssdk/version',
             $facebook_jssdk_version);
+        } else {
+          throw new Exception('param facebook_jssdk_version is not valid.');
         }
 
         $page_id = $request->getParam('page_id');
-        if ($page_id) {
+        if ($page_id && FacebookAdsExtension::isValidFBID($page_id)) {
           Mage::getModel('core/config')->saveConfig(
             self::PREFIX.'pageid',
             $page_id);
+        } else {
+          throw new Exception('param page_id is not valid.');
         }
 
         $customization = $request->getParam('customization');
@@ -62,19 +66,25 @@ class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
             if (isset($customization_obj->greetingTextCode)) {
               Mage::getModel('core/config')->saveConfig(
                 self::PREFIX.'greeting_text_code',
-                $customization_obj->greetingTextCode);
+                htmlentities($customization_obj->greetingTextCode));
             }
 
-            if (isset($customization_obj->locale)) {
+            if (isset($customization_obj->locale) &&
+                $this->isLocaleValid($customization_obj->locale)) {
               Mage::getModel('core/config')->saveConfig(
                 self::PREFIX.'locale',
                 $customization_obj->locale);
+            } else {
+              throw new Exception('param customization["locale"] is not valid.');
             }
 
-            if (isset($customization_obj->themeColorCode)) {
+            if (isset($customization_obj->themeColorCode) &&
+                $this->isThemeColorCodeValid($customization_obj->themeColorCode)) {
               Mage::getModel('core/config')->saveConfig(
                 self::PREFIX.'theme_color_code',
                 $customization_obj->themeColorCode);
+            } else {
+              throw new Exception('param customization["theme_color_code"] is not valid.');
             }
           }
         }
@@ -95,6 +105,18 @@ class Facebook_AdsExtension_Adminhtml_FbmsgerchatsetupController
         Mage::helper('adminhtml')->getUrl(
           'adminhtml/fbmsgerchatsetup/index'));
     }
+  }
+
+  private function isFacebookSDKVersionValid($version) {
+    return preg_match("/^v\d.\d+$/", $version) === 1;
+  }
+
+  private function isLocaleValid($locale) {
+    return preg_match("/^[a-z][a-z]_[A-Z][A-Z]$/", $locale) === 1;
+  }
+
+  private function isThemeColorCodeValid($theme_color_code) {
+    return preg_match("/^#[a-fA-F0-9]{1,6}$/", $theme_color_code) === 1;
   }
 
 }

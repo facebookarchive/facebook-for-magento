@@ -357,6 +357,9 @@ if (!class_exists('FacebookAdsExtension', false)) {
         self::$fbTimezones['unknown'];
     }
 
+    public static function isValidFBID($id) {
+      return preg_match("/^\d{1,20}$/", $id) === 1;
+    }
 
   }
 }
