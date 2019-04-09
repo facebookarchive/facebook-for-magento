@@ -88,7 +88,6 @@ class Facebook_AdsExtension_Model_FBProductFeed {
       case self::ATTR_ID:
       case self::ATTR_LINK:
       case self::ATTR_IMAGE_LINK:
-      case self::ATTR_IMAGE_LINK:
       case self::ATTR_CONDITION:
       case self::ATTR_AVAILABILITY:
       case self::ATTR_PRICE:
