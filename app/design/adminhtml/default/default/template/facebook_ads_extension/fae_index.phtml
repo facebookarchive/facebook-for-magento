@@ -79,6 +79,7 @@ window.facebookAdsExtensionConfig = {
  }
  ,defaultStoreId: '<?php echo $this->getSelectedStore() ?>'
  ,dontSyncOutOfStock: <?php echo $this->getFBOption('dont_sync_out_of_stock') ?>
+ ,askSellerToBuy: <?php echo $this->getFBOption('ask_seller_to_buy') ?>
  ,stores: '<?php echo json_encode($this->getStores()) ?>'
 <?php if ($this->getDiaSettingId() != null) { ?>
  ,diaSettingId: <?php echo $this->getDiaSettingId() ?>
