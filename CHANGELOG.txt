@@ -1,5 +1,8 @@
 *** Facebook Business Extension For Magento Changelog ***
 
+2019-05-06 version 2.6.3
+- Security patch
+
 2018-12-05 version 2.6.2
 - Fix configurable product showing in stock when all simple products under it
   are out of stock. (#6)
