@@ -732,18 +732,36 @@ class Facebook_AdsExtension_Model_FBProductFeed {
   }
 
   private function getGroupedProductPrice($product) {
-    $assoc_products = $product->getTypeInstance(true)
-      ->getAssociatedProductCollection($product)
-      ->addAttributeToSelect('price')
-      ->addAttributeToSelect('tax_class_id')
-      ->addAttributeToSelect('tax_percent');
+		$noOneWithoutQty = true;
+		$_associatedProducts = $product->getTypeInstance(true)->getAssociatedProducts($product);
+		$fullPrice = 0;
+		foreach($_associatedProducts as $_item) {
+			if( $_item->getData()['qty'] < 1 ) {
+        /* if some Associated Products doesn't have qty defined */
+				$noOneWithoutQty = false;
+			}
+			else {
+				$fullPrice += $_item->getData()['price'] * $_item->getData()['qty'];
+			}
+		}
+    /* If all Associated Products have qty defined, then: */
+		if( $noOneWithoutQty ) {
+      /* Return the sum of grouped products */
+			return $fullPrice;
+		}
 
-    $min_price = INF;
-    foreach ($assoc_products as $assoc_product) {
-      $min_price = min($min_price, $this->getFinalPrice($assoc_product));
-      }
-    return $min_price;
-  }
+		$assoc_products = $product->getTypeInstance(true)
+		->getAssociatedProductCollection($product)
+		->addAttributeToSelect('price')
+		->addAttributeToSelect('tax_class_id')
+		->addAttributeToSelect('tax_percent');
+
+		$min_price = INF;
+		foreach ($assoc_products as $assoc_product) {
+			$min_price = min($min_price, $this->getFinalPrice($assoc_product));
+		}
+		return $min_price;
+	}
 
   private function getFinalPrice($product, $price = null) {
     if (!isset($this->taxHelper)) {
