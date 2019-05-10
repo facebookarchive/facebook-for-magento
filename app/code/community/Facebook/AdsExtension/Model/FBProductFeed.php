@@ -35,6 +35,7 @@ class Facebook_AdsExtension_Model_FBProductFeed {
   const PATH_FACEBOOK_ADSEXTENSION_FEED_GENERATION_FORMAT =
     'facebook_adstoolbox/feed/generation/format';
   const PRICE_PRECISION = 2;
+  const ASK_SELLER_TO_BUY_URL = 'https://facebook.com/';
 
   public static function log($info) {
     Mage::log($info, Zend_Log::INFO, FacebookAdsExtension::FEED_LOGFILE);
@@ -86,7 +87,6 @@ class Facebook_AdsExtension_Model_FBProductFeed {
     switch ($attr_name) {
       case self::ATTR_ID:
       case self::ATTR_LINK:
-      case self::ATTR_IMAGE_LINK:
       case self::ATTR_IMAGE_LINK:
       case self::ATTR_CONDITION:
       case self::ATTR_AVAILABILITY:
@@ -217,7 +217,7 @@ class Facebook_AdsExtension_Model_FBProductFeed {
     // description can't be all uppercase
     $items[self::ATTR_DESCRIPTION] = $this->lowercaseIfAllCaps($items[self::ATTR_DESCRIPTION]);
 
-    $product_link = $product->getProductUrl();
+    $product_link = ($this->isUseAskSellerToBuy()) ? self::ASK_SELLER_TO_BUY_URL : $product->getProductUrl();
     if (!$this->isValidUrl($product_link)) {
       $product_link = $this->store_url . $product_link;
     }
@@ -778,5 +778,9 @@ class Facebook_AdsExtension_Model_FBProductFeed {
       }
     }
     return implode(" | ", $category_names);
+  }
+
+  private function isUseAskSellerToBuy(){
+      return Mage::getStoreConfig('facebook_ads_toolbox/dia/ask_seller_to_buy');
   }
 }

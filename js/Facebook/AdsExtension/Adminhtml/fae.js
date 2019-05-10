@@ -68,6 +68,22 @@ var FAEFlowContainer = React.createClass({
       }
     });
   },
+  _toggleAskSellerToBuy: function _toggleAskSellerToBuy() {
+    var state_bool = !this.state.askSellerToBuy;
+    this.setState({askSellerToBuy: state_bool});
+    new Ajax.Request(window.facebookAdsExtensionAjax.setOption, {
+      parameters: {
+        'option': 'ask_seller_to_buy',
+        'option_value': state_bool ? 1 : 0
+      },
+      onSuccess: function onSuccess(transport) {
+        console.log("Set Setting, ask seller to buy");
+      },
+      onFailure: function onFailure() {
+        console.error("Failed to set setting ask seller to buy");
+      }
+    });
+  },
 
   // Read the Facebook Ads Extension Developer Doc for an overview of this
   // protocol.
@@ -375,6 +391,20 @@ var FAEFlowContainer = React.createClass({
      ),
     );
 
+     var useMsgToSeller = React.createElement(
+         'input',
+         {
+           type: 'checkbox',
+           defaultChecked: this.state.askSellerToBuy,
+           onChange: this._toggleAskSellerToBuy,
+         },
+         React.createElement(
+             'span',
+             {style: {whiteSpace: "nowrap", fontSize: "13px"}},
+             'Use messaging to sellers on FB Shop',
+         ),
+     );
+
     var advancedOptions = React.createElement(
       'div',
       {id: 'fbAdvancedOptions', style: {display: 'none'}},
@@ -384,6 +414,14 @@ var FAEFlowContainer = React.createClass({
                'are marked out of stock. Note that items that go out of stock ' +
                'will be deleted from Facebook if this option is set.'},
         syncOutOfStock,
+      ),
+      React.createElement(
+         'div',
+         {
+           title: 'Check this to allow user message to seller. (By default they will redirect to Product detail link.',
+           style: {'margin-top': '10px'}
+         },
+         useMsgToSeller,
       ),
       React.createElement('div', {style: {padding: '4px'}}),
       React.createElement(
