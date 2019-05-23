@@ -68,19 +68,19 @@ class Facebook_AdsExtension_Adminhtml_FbupgradeController
     } catch (Exception $e) {
       FacebookAdsExtension::logException($e);
       $this->ajaxSend(array(
-        upgrade_needed => 0,
-        error => $e->getMessage(),
-        stack_trace => $e->getTraceAsString(),
+        'upgrade_needed' => 0,
+        'error' => $e->getMessage(),
+        'stack_trace' => $e->getTraceAsString(),
       ));
     }
   }
 
   private function sendAjaxReply($json, $upgrade, $lines = null) {
     $this->ajaxSend(array(
-      upgrade_needed => $upgrade ? 1 : 0,
-      latest_version => ($json && isset($json['tag_name'])) ?  $json['tag_name'] : '',
-      url => ($json && isset($json['html_url'])) ? $json['html_url'] : '',
-      extra_info => $lines,
+      'upgrade_needed' => $upgrade ? 1 : 0,
+      'latest_version' => ($json && isset($json['tag_name'])) ?  $json['tag_name'] : '',
+      'url' => ($json && isset($json['html_url'])) ? $json['html_url'] : '',
+      'extra_info' => $lines,
     ));
   }
 
