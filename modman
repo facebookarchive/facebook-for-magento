@@ -9,6 +9,7 @@ app/design/adminhtml/default/default/template/facebook_ads_extension/fae_index.p
 app/design/frontend/base/default/layout/facebook_ads_extension.xml            app/design/frontend/base/default/layout/facebook_ads_extension.xml
 app/design/frontend/base/default/template/facebook_ads_extension/addtocart.phtml            app/design/frontend/base/default/template/facebook_ads_extension/addtocart.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/head.phtml            app/design/frontend/base/default/template/facebook_ads_extension/head.phtml
+app/design/frontend/base/default/template/facebook_ads_extension/noscript.phtml            app/design/frontend/base/default/template/facebook_ads_extension/noscript.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/initiate_checkout.phtml            app/design/frontend/base/default/template/facebook_ads_extension/initiate_checkout.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/purchase.phtml            app/design/frontend/base/default/template/facebook_ads_extension/purchase.phtml
 app/design/frontend/base/default/template/facebook_ads_extension/search.phtml            app/design/frontend/base/default/template/facebook_ads_extension/search.phtml

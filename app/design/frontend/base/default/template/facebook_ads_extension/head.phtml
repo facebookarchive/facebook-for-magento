@@ -14,9 +14,6 @@ fbq('track', 'PageView', {
   pluginVersion: "<?php echo $this->getPluginVersion() ?>"
 });
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=<?php echo $this->getFacebookPixelID() ?>&ev=PageView&noscript=1&a=<?php echo $this->getFacebookAgentVersion() ?>"
-/></noscript>
 <!-- End Facebook Pixel Code -->
 <?php } else  { ?>
 <!-- NO Pixel ID is configured, please goto Admin -->
