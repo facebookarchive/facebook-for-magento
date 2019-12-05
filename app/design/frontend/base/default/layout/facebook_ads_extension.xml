@@ -9,6 +9,11 @@
              name="facebook_ads_extension.addtocart"
              template="facebook_ads_extension/addtocart.phtml" />
     </reference>
+    <reference name="after_body_start">
+      <block type="Facebook_AdsExtension/head"
+             name="facebook_ads_extension.noscript"
+             template="facebook_ads_extension/noscript.phtml" />
+    </reference>
   </default>
   <cms_index_index>
     <reference name="before_body_end">
