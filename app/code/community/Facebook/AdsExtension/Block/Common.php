@@ -45,7 +45,13 @@ class Facebook_AdsExtension_Block_Common extends Mage_Core_Block_Template {
   }
 
   public function getFacebookPixelID() {
-    return Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/id');
+    $storeId = Mage::app()->getStore()->getStoreId();
+    $facebookStoreId = $this->getFacebookStoreID();
+    return ($storeId == $facebookStoreId) ? Mage::getStoreConfig('facebook_ads_toolbox/fbpixel/id') : null;
+  }
+
+  public function getFacebookStoreID() {
+    return Mage::getStoreConfig('facebook_ads_toolbox/fbstore/id');
   }
 
   public function pixelInitCode() {
