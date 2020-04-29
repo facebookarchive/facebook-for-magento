@@ -31,6 +31,15 @@
           </Facebook_AdsExtension_Cart_Observer>
         </observers>
       </checkout_cart_product_add_after>
+      <wishlist_add_product>
+        <observers>
+          <Facebook_AdsExtension_Cart_Observer>
+            <type>object</type>
+            <class>Facebook_AdsExtension_Model_Observer</class>
+            <method>addToWishlist</method>
+          </Facebook_AdsExtension_Cart_Observer>
+        </observers>
+      </wishlist_add_product>
       <controller_action_predispatch_adminhtml>
         <observers>
           <Facebook_AdsExtension_NoCache_Observer>

@@ -34,6 +34,30 @@ class Facebook_AdsExtension_Model_Observer {
     $session->setData("fbms_add_to_cart", $addToCartArray);
   }
 
+  public function addToWishlist($observer) {
+    if (!session_id()) { return; }
+    $product = $observer->getProduct();
+    $productId = $product->getId();
+
+    // If we added an invisible product, add the parent instead otherwise
+    // the add to cart pixel fire won't match.
+    if (
+      $product->getVisibility() == Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE &&
+      $product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE
+    ) {
+      $parentIds = Mage::getModel('catalog/product_type_configurable')
+        ->getParentIdsByChild($productId);
+      if (!empty($parentIds) && is_array($parentIds) && $parentIds[0]) {
+        $productId = $parentIds[0];
+      }
+    }
+
+    $session = Mage::getSingleton("core/session",  array("name"=>"frontend"));
+    $getAddToWishlistArray = $session->getData("fbms_add_to_wishlist") ?: array();
+    $getAddToWishlistArray[] = $productId;
+    $session->setData("fbms_add_to_wishlist", $getAddToWishlistArray);
+  }
+
   public function estimateFeedGenerationTime() {
     $feed = self::getFeedObject();
 

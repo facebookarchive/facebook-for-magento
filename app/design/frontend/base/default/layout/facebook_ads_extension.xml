@@ -8,6 +8,9 @@
       <block type="Facebook_AdsExtension/addToCart"
              name="facebook_ads_extension.addtocart"
              template="facebook_ads_extension/addtocart.phtml" />
+      <block type="Facebook_AdsExtension/addToWishlist"
+             name="facebook_ads_extension.addtowishlist"
+             template="facebook_ads_extension/addtowishlist.phtml" />
     </reference>
   </default>
   <cms_index_index>
