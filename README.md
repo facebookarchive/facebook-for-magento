@@ -1,5 +1,5 @@
 
-# Facebook Ads Extension For Magento
+# Facebook Ads Extension For Magento2
 
 ## Facebook Connects Businesses with People
 
