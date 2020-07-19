@@ -1,0 +1,24 @@
+<?php
+if ($this->getFacebookPixelID()) {
+  $eventId = null;
+  if( $this->isS2SEnabled() ){
+    $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
+    $this->trackServerEvent($eventId);
+  }
+?>
+<script>
+fbq('track', 'Search', {
+    source: "<?php echo $this->getSource() ?>",
+    version: "<?php echo $this->getMagentoVersion() ?>",
+    pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+    search_string: "<?php echo $this->getSearchQuery() ?>"
+  }
+  <?php if($eventId) { ?>
+  ,{
+    eventID:  "<?php echo $eventId ?>"
+  }
+  <?php }?>
+);
+</script>
+  <?php $this->logEvent($this->getFacebookPixelID(), 'Search') ?>
+<?php } ?>
