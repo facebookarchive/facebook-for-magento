@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="facebook_businessextension_ssapi_add_to_cart">
+        <observer name="facebook_businessextension_ssapi_add_to_cart_after" instance="Facebook\BusinessExtension\Observer\AddToCart"/>
+    </event>
+    <event name="facebook_businessextension_ssapi_search">
+        <observer name="facebook_businessextension_ssapi_search_after" instance="Facebook\BusinessExtension\Observer\Search" />
+    </event>
+    <event name="facebook_businessextension_ssapi_view_content">
+        <observer name="facebook_businessextension_ssapi_view_content_after" instance="Facebook\BusinessExtension\Observer\ViewContent" />
+    </event>
+    <event name="facebook_businessextension_ssapi_view_category">
+        <observer name="facebook_businessextension_ssapi_view_category_after" instance="Facebook\BusinessExtension\Observer\ViewCategory" />
+    </event>
+    <event name="facebook_businessextension_ssapi_initiate_checkout">
+        <observer name="facebook_businessextension_ssapi_initiate_checkout_after" instance="Facebook\BusinessExtension\Observer\InitiateCheckout" />
+    </event>
+    <event name="facebook_businessextension_ssapi_purchase">
+        <observer name="facebook_businessextension_ssapi_purchase_after" instance="Facebook\BusinessExtension\Observer\Purchase" />
+    </event>
+</config>

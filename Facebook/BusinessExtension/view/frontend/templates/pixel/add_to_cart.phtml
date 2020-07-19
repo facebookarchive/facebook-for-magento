@@ -1,0 +1,52 @@
+<?php if ($this->getFacebookPixelID()) { ?>
+<script>
+require([
+  'jquery'
+], function($) {
+
+  function trackAddToCart(content_ids, content_name, content_category, value, eventId) {
+    fbq('track', 'AddToCart', {
+      source: "<?php echo $this->getSource() ?>",
+      version: "<?php echo $this->getMagentoVersion() ?>",
+      pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+      content_type: "<?php echo $this->getContentType() ?>",
+      currency: "<?php echo $this->getCurrency() ?>",
+      content_ids: content_ids,
+      content_name: content_name,
+      content_category: content_category,
+      value: value
+      },
+      {
+        eventID: eventId
+      }
+    );
+  }
+
+  var product_info_url = '<?php echo $this->getProductInfoUrl() ?>';
+  var form_key = '<?php echo $this->getFormKey() ?>';
+
+  $(document).on('ajax:addToCart', function(event, data) {
+    var product_sku = data.sku;
+    $.ajax({
+      url: product_info_url,
+      data: {
+        product_sku: product_sku,
+        form_key: form_key
+      },
+      type: 'post',
+      dataType: 'json',
+      success: function(res) {
+        trackAddToCart(
+          [res.id],
+          res.name,
+          res.content_category,
+          res.value,
+          res.event_id
+        );
+      }
+    });
+  });
+});
+</script>
+  <?php $this->logEvent($this->getFacebookPixelID(), 'AddToCart') ?>
+<?php } ?>

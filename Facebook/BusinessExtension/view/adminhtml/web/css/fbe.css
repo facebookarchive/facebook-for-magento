@@ -1,0 +1,556 @@
+/**
+ * Copyright (c) 2016-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the code directory.
+ */
+
+#fbe-wrapper {
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+    display: block;
+    width: 600px;
+    background-image: url('images/small-store.png');
+    background-position-x: 92%;
+    background-size: 200px;
+    background-position-y: 65px;
+    height: auto;
+    background-repeat: no-repeat;
+}
+#fbe-wrapper-success-background {
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+    display: block;
+    width: 600px;
+    background-image: url('images/setup-success.png');
+    background-position-x: 92%;
+    background-size: 200px;
+    background-position-y: 65px;
+    height: auto;
+    background-repeat: no-repeat;
+}
+
+#wrapper-debug {
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+    display: block;
+    width: 600px;
+}
+
+
+#facebook-header {
+    width: 600px;
+    height: 56px;
+    color: #141823;
+    padding: 0;
+    direction: ltr;
+    unicode-bidi: embed;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 14px;
+    background-repeat: repeat-x;
+    background-size: 1px 42px;
+    background-position: 0 0;
+    border: 0;
+    border-bottom: 1px solid #133783;
+    box-shadow: none;
+    font-family: helvetica, arial, sans-serif;
+    position: relative;
+    border: 0;
+    border-radius: 3px 3px 0 0;
+    color: #141823;
+    line-height: 1.28;
+}
+
+#fbe-flow {
+    padding-bottom: 5px;
+    width: 600px;
+}
+
+#facebook-header td {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+}
+
+#facebook-header .logo {
+    background-image: url('images/facebook-icon.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 10px 10px 7px 20px;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+}
+
+#fbe-loader {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 280px;
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#fbe-debug-mode-text {
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#fbe-debug-mode-link {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.fbe-upgrade-notice {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(126,129,136);
+}
+
+div.red-text {
+    color: red;
+}
+div.green-text {
+    color: green;
+}
+
+div.fbe-flow-container {
+    width: 344px;
+    height: 247px;
+    color: #141823;
+    padding: 0px 0px 25px 0px;
+    direction: ltr;
+    unicode-bidi: embed;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+    margin-left: 16px;
+    margin-right: 240px;
+    margin-bottom: 13px;
+    margin-top: 16px;
+    display: inline;
+}
+
+div.fbe-flow-container>div {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    margin-left: 16px;
+}
+
+div.fbe-flow-container div.header {
+    background: white !important;
+    text-align: left;
+    font-family: helvetica, arial, sans-serif;
+    color: #141823;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+div.fbe-flow-container div.header h2 {
+    font-size: 24px;
+    margin-bottom: 0px;
+    font-weight: normal;
+}
+
+div.fbe-flow-container div.settings h2 {
+    color: rgb(126,129,136);
+    margin-top: 0px;
+    height: 10px;
+    display: inline-block;
+}
+div.fbe-flow-container div.settings h1 {
+    color: rgb(126,129,136);
+    margin-top: 0px;
+    font-size: 14px;
+}
+
+div.fbe-flow-container a {
+    color: #3b5998;
+    text-decoration: none;
+    line-height: 20px;
+    width: 520px;
+    height: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+div.fbe-flow-container ul {
+    list-style-type: none;
+    margin: 10px 10px 10px 0;
+    width: 343px;
+    height: auto;
+}
+
+div.fbe-flow-container button {
+    background-color: #f6f7f8;
+    background-repeat: repeat-x;
+    border: 1px solid;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-sizing: content-box;
+    font-family: helvetica, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    border-color: #e0e1e2;
+    color: #4e5665;
+    text-shadow: 0 1px 0 #fff;
+    background-position: 0 -75px;
+    font-size: 12px;
+    line-height: 12px;
+    cursor: pointer;
+    margin: 8px 12px 10px 0px;
+    height: 30px;
+    width: 82px;
+}
+
+div.fbe-flow-container button.blue-getstarted {
+    background-position: 0 -389px;
+    background-color: rgb(86,120,227);
+    border-color: #435a8b #3c5488 #334c83;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+    width: 83px;
+    height: 20px;
+    display: inline;
+    margin-left: 16px;
+    border-radius: 6px;
+}
+
+div.fbe-flow-container button.blue-createad {
+    background-position: 0 -389px;
+    background-color: rgb(86,120,227);
+    border-color: #435a8b #3c5488 #334c83;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+    width: 110px;
+    height: 26px;
+    display: inline;
+    margin-left: 16px;
+    border-radius: 6px;
+}
+
+div.fbe-flow-container button.long {
+    background-position: 0 -500px;
+    background-color: rgb(86,120,227);
+    border-color: #435a8b #3c5488 #334c83;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    width: 160px;
+}
+
+div.fbe-flow-container button.small {
+    height: 20px;
+    padding: 0px;
+    width: 60px;
+    margin-top: 10px;
+}
+
+div.fbe-flow-container textarea {
+    background-repeat: repeat-x;
+    border: 1px solid;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-sizing: content-box;
+    font-family: helvetica, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    vertical-align: middle;
+    border-color: #cccccc #c5c6c8 #b6b7b9;
+    color: #4e5665;
+    text-shadow: 0 1px 0 #fff;
+    padding: 10px 16px;
+    margin: 3px;
+}
+
+div.fbe-flow-container select {
+    margin: 10px 16px;
+}
+
+div.fbe-flow-container label {
+    font-family: helvetica, arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    font-size: 14px;
+    color: #4e5665;
+    padding: 0px;
+}
+
+div.fbe-flow-container hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+div.fbe-flow-container li {
+    width: 296px;
+    height: auto;
+    padding-bottom: 0;
+    padding-right: 16px;
+    margin-bottom: 7px;
+    vertical-align: middle;
+}
+
+div.fbe-flow-container li .image {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    background-size: contain;
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+    border: none!important;
+    border-color: white!important;
+    outline-color: white!important;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white!important;
+    box-shadow: none!important;
+}
+
+div.fbe-flow-container li .images-ads {
+
+    background-image: url('images/ads.png');
+
+}
+
+div.fbe-flow-container li .images-bar-chart {
+    background-image: url('images/bar-chart.png');
+
+}
+div.fbe-flow-container li .images-group {
+    background-image: url('images/group.png');
+}
+
+div.fbe-flow-container li .images-shopping {
+    background-image: url('images/shopping.png');
+}
+
+div.fbe-flow-container li .images-down {
+    background-image: url('images/down-arrow.png');
+}
+
+div.fbe-flow-container li .images-up {
+    background-image: url('images/up-arrow.png');
+}
+
+
+div.fbe-flow-container h1 {
+    width: 343px;
+    height: 24px;
+    font-size: 17px;
+    color: #141823;
+    font-weight: bold;
+    font-family: arial;
+    margin-left: 16px;
+    margin-bottom: 3px;
+    line-height: 20px;
+}
+
+div.fbe-flow-container h2 {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(0,0,0);
+    font-weight: normal;
+    width: 343px;
+    height: 140px;
+    margin-left: 16px;
+    margin-right: 241px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+}
+
+div.fbe-flow-container .modal-container {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+div.fbe-flow-container .settings-section {
+    display: inline-block;
+    min-width: 45%;
+    max-width: 45%;
+    margin-right: 8px;
+    vertical-align: top;
+}
+
+div.fbe-flow-container .settings-section h1 {
+    color: rgb(126,129,136);
+    font-size: 14px;
+    margin-top: 0px;
+    width: auto;
+    margin-left: 0;
+}
+
+div.fbe-flow-container .settings-section h2 {
+    color: rgb(126,129,136);
+    font-size: 14px;
+    margin-top: 2px;
+    height: 10px;
+    width: 248px;
+    margin-left: 0;
+    display: inline;
+}
+
+div.fbe-flow-container .settings-section .btn.small {
+    background: #f6f7f8;
+    border-color: #e0e1e2;
+    color: #4e5665;
+    height: 20px;
+    margin-top: 10px;
+    padding: 2px 6px;
+    width: auto;
+}
+
+div.fbe-flow-container .modal-container .modal {
+    text-align: left;
+    width: 600px;
+    background-color: white;
+    margin: 20% auto;
+    border-radius: 3px;
+}
+
+div.fbe-flow-container .modal-container .modal .modal-header {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #f6f7f8;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 3px 3px 0 0;
+    color: #141823;
+    padding: 10px 12px;
+    background-image: url(images/facebook-icon.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position-x: 6px;
+    background-position-y: 5px;
+    height: 30px
+}
+
+div.fbe-flow-container .modal-container .modal .modal-content {
+    color: #232937;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 30px 12px;
+}
+
+div.fbe-flow-container .modal-container .modal .modal-close {
+    text-align: right;
+    border-top: 1px solid #dcdee3;
+    margin: 0 12px;
+    background-color: #fff;
+    padding: 12px 0;
+}
+
+div.fbe-flow-container .modal-container .modal .modal-close button {
+    margin: 0;
+    padding: 0 14px;
+}
+
+div.fbe-flow-container .settings-section .switch-a {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    left: 120px;
+}
+
+div.fbe-flow-container .settings-section .switch-b {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    left: 33px;
+}
+
+div.fbe-flow-container .settings-section .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+div.fbe-flow-container .settings-section .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+div.fbe-flow-container .settings-section .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 16px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+div.fbe-flow-container .settings-section input:checked + .slider {
+    background-color: #2196F3;
+}
+
+div.fbe-flow-container .settings-section input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+div.fbe-flow-container .settings-section input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+div.fbe-flow-container .settings-section .slider.round {
+    border-radius: 50px;
+}
+
+div.fbe-flow-container .settings-section .slider.round:before {
+    border-radius: 60%;
+}
+
+div.fbe-flow-container .settings-section .advanced-options {
+    display: none;
+    width: 580px;
+    margin-top: 20px;
+}
+
+div.fbe-flow-container .settings-section .show {
+    display: block;
+}
+
+div.fbe-flow-container .settings-section .advanced-options h2{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+

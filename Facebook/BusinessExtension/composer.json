@@ -1,0 +1,10 @@
+{
+  "name": "Facebook/BusinessExtension",
+  "description": "Facebook Business Extension for Magento2",
+  "type": "project",
+  "license": "GPL",
+
+  "require": {
+    "facebook/php-business-sdk": "7.0.1"
+  }
+}
