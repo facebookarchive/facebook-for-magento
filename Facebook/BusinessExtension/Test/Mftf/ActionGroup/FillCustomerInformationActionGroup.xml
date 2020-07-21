@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/actionGroupSchema.xsd">
+    <!--Fill search form-->
+    <actionGroup name="fillCustomerInformation">
+        <arguments>
+            <argument name="customer" defaultValue="_defaultCustomer"/>
+        </arguments>
+        <fillField userInput="{{customer.email}}" selector="#customer-email" stepKey="fillEmail"/>
+        <waitForAjaxLoad stepKey="waitForAccountVerification"/>
+        <fillField userInput="{{customer.firstName}}" selector="input[name=firstname]" stepKey="fillFirstName"/>
+        <fillField userInput="{{customer.lastName}}" selector="input[name=lastname]" stepKey="fillLastName"/>
+        <fillField userInput="{{customer.streetAddress}}" selector="input[name^=street]" stepKey="fillStreetAddress"/>
+        <fillField userInput="{{customer.city}}" selector="input[name=city]" stepKey="fillCity"/>
+        <selectOption userInput="{{customer.state}}" selector="select[name=region_id]" stepKey="selectCity"/>
+        <fillField userInput="{{customer.zip}}" selector="input[name=postcode]" stepKey="fillZipCode"/>
+        <fillField userInput="{{customer.phone}}" selector="input[name=telephone]" stepKey="fillTelephone"/>
+    </actionGroup>
+</actionGroups>

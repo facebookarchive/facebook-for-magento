@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+
+<group id="default">
+
+    <job name="facebook_business_extension_aam_settings_cronjob" instance="Facebook\BusinessExtension\Cron\AAMSettingsCron" method="execute">
+
+        <!--Check this document to read more about cron jobs in Magento: https://devdocs.magento.com/guides/v2.4/config-guide/cron/custom-cron-ref.html-->
+        <schedule>*/20 * * * *</schedule>
+
+    </job>
+
+</group>
+
+</config>

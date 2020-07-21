@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="_defaultProduct" type="product">
+        <data key="sku">CON1</data>
+        <data key="name">Console1</data>
+        <data key="price">500</data>
+        <data key="status">1</data>
+        <data key="visibility">4</data>
+        <data key="type_id">simple</data>
+        <data key="attribute_set_id">4</data>
+        <data key="weight">10</data>
+        <requiredEntity type="productExtensionAttribute">_defaultEAVStock</requiredEntity>
+        <requiredEntity type="customAttributeArray">CustomAttributeCategoryIds</requiredEntity>
+    </entity>
+</entities>

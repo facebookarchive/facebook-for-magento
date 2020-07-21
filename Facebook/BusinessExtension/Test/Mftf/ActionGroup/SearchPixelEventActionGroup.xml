@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/actionGroupSchema.xsd">
+    <!--Fill search form-->
+    <actionGroup name="fillSearchForm">
+        <arguments>
+            <argument name="searchQuery" defaultValue="_defaultSearch"/>
+        </arguments>
+        <submitForm selector="#search_mini_form" parameterArray="['q' => '{{searchQuery.query}}']" stepKey="submitSearchForm"/>
+    </actionGroup>
+</actionGroups>

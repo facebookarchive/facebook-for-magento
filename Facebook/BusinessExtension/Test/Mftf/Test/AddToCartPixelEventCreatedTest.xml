@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="AddToCartPixelEventCreatedTest">
+        <annotations>
+            <features value="Pixel"/>
+            <stories value="Add to cart pixel event"/>
+            <title value="The page has an add to cart pixel event."/>
+            <description value="The product page should contain a fbq call with an add to cart pixel event."/>
+            <severity value="MAJOR"/>
+            <group value="Pixel"/>
+        </annotations>
+        <before>
+            <!-- Create sample product -->
+            <createData entity="_defaultCategory" stepKey="createCategory"/>
+            <createData entity="_defaultProduct" stepKey="createProduct">
+                <requiredEntity createDataKey="createCategory"/>
+            </createData>
+        </before>
+        <after>
+            <!-- Delete sample product -->
+                <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
+                <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
+        </after>
+
+        <!-- Navigate to Home page -->
+        <amOnPage url="" stepKey="openHomePage"/>
+        <waitForPageLoad stepKey="waitForHomePageLoad" time="60" />
+        <!-- Navigate to product page -->
+        <amOnPage url="/{{_defaultProduct.name}}2.html" stepKey="openProductPage" />
+        <waitForPageLoad stepKey="waitForProductPageLoad" time="60" />
+        <!-- Submit add to cart form -->
+        <submitForm selector="#product_addtocart_form" parameterArray="[]" stepKey="submitAddToCartForm"/>
+
+        <!-- Check event inside page-->
+        <grabPageSource stepKey="grabPageSource" />
+        <assertRegExp message="Cannot find add to cart event in page source" stepKey="assertAddToCartPixelEventFound">
+            <actualResult type="string">{$grabPageSource}</actualResult>
+            <expectedResult type="string">/.*fbq\('track',\s*'AddToCart'\s*,\s*{\s*source: "{{_pluginInfo.source}}",\s*version: "2(.[0-9]+)+",\s*pluginVersion: "{{_pluginInfo.pluginVersion}}"\s*,\s*content_type: "product",\s*currency: "[A-Z]+"\s*,\s*content_ids: content_ids\s*,\s*content_name: content_name\s*,\s*content_category: content_category\s*,\s*value: value.*/</expectedResult>
+        </assertRegExp>
+    </test>
+</tests>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="PurchasePixelEventCreatedTest">
+        <annotations>
+            <features value="Pixel"/>
+            <stories value="Purchase pixel event"/>
+            <title value="The page has a purchase pixel event."/>
+            <description value="The product page should contain a fbq call with a purchase pixel event."/>
+            <severity value="MAJOR"/>
+            <group value="Pixel"/>
+        </annotations>
+        <before>
+            <!-- Create sample product -->
+            <createData entity="_defaultCategory" stepKey="createCategory"/>
+            <createData entity="_defaultProduct" stepKey="createProduct">
+                <requiredEntity createDataKey="createCategory"/>
+            </createData>
+        </before>
+        <after>
+            <!-- Delete sample product -->
+                <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
+                <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
+        </after>
+
+        <!-- Navigate to Home page -->
+        <amOnPage url="" stepKey="openHomePage"/>
+        <waitForPageLoad stepKey="waitForHomePageLoad" time="60" />
+        <!-- Navigate to product page -->
+        <amOnPage url="/{{_defaultProduct.name}}2.html" stepKey="openProductPage" />
+        <waitForPageLoad stepKey="waitForProductPageLoad" time="60" />
+        <!-- Click add to cart button -->
+        <click selector="#product-addtocart-button" stepKey="clickAddToCartButton" />
+        <waitForAjaxLoad stepKey="waitForAddToCart" time="40"/>
+         <!-- Navigate to checkout page-->
+        <amOnPage url="/checkout/#shipping" stepKey="openInitiateCheckoutPage" />
+        <waitForPageLoad stepKey="waitForInitiateCheckoutPageLoad" time="60" />
+        <!-- Fill customer form -->
+        <actionGroup ref="fillCustomerInformation" stepKey="fillCustomerInformation">
+            <argument name="customer" value="_defaultCustomer" />
+        </actionGroup>
+        <!-- Click on Next button -->
+        <click selector="button.button.action.continue.primary" stepKey="clickNextButton"/>
+        <waitForPageLoad stepKey="waitForConfirmationPage" time="60" />
+        <!-- Cheking box for shipping address-->
+        <checkOption selector="#billing-address-same-as-shipping-checkmo" stepKey="checkShippingAddressEqualToBilling" />
+        <!-- Click on place order -->
+        <click selector="button.action.primary.checkout" stepKey="clickPlaceOrder"/>
+        <!-- Wait for thank you page -->
+        <waitForPageLoad stepKey="waitForThankYouPage" time="60" />
+        <!-- Check event inside page-->
+        <grabPageSource stepKey="grabPageSource" />
+        <assertRegExp message="Cannot find purchase event in page source" stepKey="assertPurchasePixelEventFound">
+            <actualResult type="string">{$grabPageSource}</actualResult>
+            <expectedResult type="string">/.*fbq\('track',\s*'Purchase'\s*,\s*{\s*source: "{{_pluginInfo.source}}",\s*version: "2(.[0-9]+)+",\s*pluginVersion: "{{_pluginInfo.pluginVersion}}"\s*,\s*content_type: "product",\s*content_ids: \["$createProduct.id$"\]\s*,\s*value: [0-9]+\s*,\s*currency: "[A-Z]+".*/</expectedResult>
+        </assertRegExp>
+    </test>
+</tests>

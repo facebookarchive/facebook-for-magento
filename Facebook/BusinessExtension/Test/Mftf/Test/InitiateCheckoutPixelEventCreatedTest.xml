@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="InitiateCheckoutPixelEventCreatedTest">
+        <annotations>
+            <features value="Pixel"/>
+            <stories value="Initiate checkout pixel event"/>
+            <title value="The page has an initiate checkout pixel event."/>
+            <description value="The product page should contain a fbq call with an initiate checkout pixel event."/>
+            <severity value="MAJOR"/>
+            <group value="Pixel"/>
+        </annotations>
+        <before>
+            <!-- Create sample product -->
+            <createData entity="_defaultCategory" stepKey="createCategory"/>
+            <createData entity="_defaultProduct" stepKey="createProduct">
+                <requiredEntity createDataKey="createCategory"/>
+            </createData>
+        </before>
+        <after>
+            <!-- Delete sample product -->
+                <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
+                <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
+        </after>
+
+        <!-- Navigate to Home page -->
+        <amOnPage url="" stepKey="openHomePage"/>
+        <waitForPageLoad stepKey="waitForHomePageLoad" time="60" />
+        <!-- Navigate to product page -->
+        <amOnPage url="/{{_defaultProduct.name}}2.html" stepKey="openProductPage" />
+        <waitForPageLoad stepKey="waitForProductPageLoad" time="60" />
+        <!-- Submit add to cart form -->
+        <submitForm selector="#product_addtocart_form" parameterArray="[]" stepKey="submitAddToCartForm"/>
+         <!-- Navigate to checkout page-->
+        <amOnPage url="/checkout/#shipping" stepKey="openInitiateCheckoutPage" />
+        <waitForPageLoad stepKey="waitForInitiateCheckoutPageLoad" time="60" />
+        <!-- Check event inside page-->
+        <grabPageSource stepKey="grabPageSource" />
+        <assertRegExp message="Cannot find initiate checkout event in page source" stepKey="assertInitiateCheckoutPixelEventFound">
+            <actualResult type="string">{$grabPageSource}</actualResult>
+            <expectedResult type="string">/.*fbq\('track',\s*'InitiateCheckout'\s*,\s*{\s*source: "{{_pluginInfo.source}}",\s*version: "2(.[0-9]+)+",\s*pluginVersion: "{{_pluginInfo.pluginVersion}}"\s*,\s*content_type: "product",\s*content_ids: \["[0-9]+"\]\s*,\s*value: {{_defaultProduct.price}}\s*,\s*currency: "[A-Z]+".*/</expectedResult>
+        </assertRegExp>
+    </test>
+</tests>

@@ -1,0 +1,24 @@
+<?php
+if ($this->getFacebookPixelID()) {
+  $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
+  $this->trackServerEvent($eventId);
+?>
+<script>
+fbq('track', 'Purchase', {
+  source: "<?php echo $this->getSource() ?>",
+  version: "<?php echo $this->getMagentoVersion() ?>",
+  pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+  content_type: "<?php echo $this->getContentType() ?>",
+  content_ids: [<?php echo $this->getContentIDs() ?>]
+  <?php if ($this->getValue() && $this->getCurrency()) { ?>
+    , value: <?php echo $this->getValue() ?>
+    , currency: "<?php echo $this->getCurrency() ?>"
+  <?php } ?>
+  }
+  ,{
+    eventID:  "<?php echo $eventId ?>"
+  }
+);
+</script>
+  <?php $this->logEvent($this->getFacebookPixelID(), 'Purchase') ?>
+<?php } ?>
