@@ -1,0 +1,34 @@
+<div>
+    <div id="fbe-iframe">
+    </div>
+</div>
+
+<script>
+    window.facebookBusinessExtensionConfig = {
+      pixelId: '<?php echo $this->fetchPixelId() ?>'
+      ,popupOrigin: "https://business.facebook.com"
+      ,setPixelId: '<?php echo $this->getPixelAjaxRoute() ?>'
+      ,setAccessToken: '<?php echo $this->getAccessTokenAjaxRoute() ?>'
+      ,setProfilesData: '<?php echo $this->getProfilesAjaxRoute()?>'
+      ,setFeedPush: '<?php echo $this->getFeedPushAjaxRoute() ?>'
+      ,externalBusinessId: '<?php echo $this->getExternalBusinessId()?>'
+      ,fbeLoginUrl: "https://business.facebook.com/fbe-iframe-get-started/?"
+      ,deleteConfigKeys: '<?php echo $this->getDeleteAssetIdsAjaxRoute() ?>'
+      ,appId: '195311308289826'
+      ,timeZone: 'America/Los_Angeles'
+      ,installed: '<?php echo $this->isFBEInstalled() ?>'
+      ,systemUserName: '<?php echo $this->getExternalBusinessId() ?>' + '_system_user'
+      ,businessVertical: 'ECOMMERCE'
+      ,version: 'v7.0'
+      ,currency: '<?php echo $this->getCurrencyCode() ?>'
+      ,businessName: 'Solutions Engineering Team'
+      ,debug: true
+      ,setAAMSettings: '<?php echo $this->getAAMSettingsRoute() ?>'
+    };
+</script>
+<script>
+  require([
+    'Facebook_BusinessExtension/js/fbe_allinone'
+  ], function() {
+  });
+</script>

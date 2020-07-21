@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page layout="2columns-left" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+      <referenceBlock name="head.additional">
+          <block class="Facebook\BusinessExtension\Block\Pixel\AddToCart"
+                 name="fbe.pixel.add_to_cart"
+                 template="Facebook_BusinessExtension::pixel/add_to_cart.phtml"
+                 before="-" />
+      </referenceBlock>
+      <referenceContainer name="before.body.end">
+          <block class="Facebook\BusinessExtension\Block\Pixel\ViewCategory"
+                 name="fbe.pixel.view_category"
+                 template="Facebook_BusinessExtension::pixel/view_category.phtml"
+                 before="-" />
+      </referenceContainer>
+    </body>
+</page>

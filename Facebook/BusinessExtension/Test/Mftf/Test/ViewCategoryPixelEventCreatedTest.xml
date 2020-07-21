@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="ViewCategoryPixelEventCreatedTest">
+        <annotations>
+            <features value="Pixel"/>
+            <stories value="View Category Pixel Event"/>
+            <title value="The page has a view category pixel event."/>
+            <description value="The page should contain a fbq call with a view category pixel event."/>
+            <severity value="MAJOR"/>
+            <group value="Pixel"/>
+        </annotations>
+        <before>
+            <!-- Create sample category -->
+            <createData entity="_defaultCategory" stepKey="createCategory"/>
+        </before>
+        <after>
+            <!-- Delete sample category -->
+            <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
+        </after>
+
+        <!-- Navigate to category page -->
+        <amOnPage url="/{{_defaultCategory.name}}2.html" stepKey="openCategoryPage" />
+        <waitForPageLoad stepKey="waitForCategoryPageLoad" />
+
+        <!-- Check event inside page-->
+        <grabPageSource stepKey="grabPageSource" />
+        <assertRegExp message="Cannot find view category event in page source" stepKey="assertViewCategoryPixelEventFound">
+            <actualResult type="string">{$grabPageSource}</actualResult>
+            <expectedResult type="string">/.*fbq\('trackCustom',\s*'ViewCategory',\s*{\s*source: "{{_pluginInfo.source}}",\s*version: "2(.[0-9]+)+",\s*pluginVersion: "{{_pluginInfo.pluginVersion}}"\s*,\s*content_category: "{{_defaultCategory.name}}2".*/</expectedResult>
+        </assertRegExp>
+    </test>
+</tests>

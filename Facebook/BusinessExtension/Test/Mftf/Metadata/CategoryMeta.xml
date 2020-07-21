@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/DataGenerator/etc/dataOperation.xsd">
+    <operation name="CreateCategory" dataType="category" type="create" auth="adminOauth" url="/V1/categories" method="POST">
+        <contentType>application/json</contentType>
+        <object key="category" dataType="category">
+            <field key="parent_id">integer</field>
+            <field key="name">string</field>
+            <field key="is_active">boolean</field>
+            <field key="position">integer</field>
+            <field key="level">integer</field>
+            <field key="children">string</field>
+            <field key="created_at">string</field>
+            <field key="updated_at">string</field>
+            <field key="path">string</field>
+            <field key="include_in_menu">boolean</field>
+            <array key="available_sort_by">
+                <value>string</value>
+            </array>
+            <field key="extension_attributes">empty_extension_attribute</field>
+            <array key="custom_attributes">
+                <value>custom_attribute</value>
+            </array>
+        </object>
+        <field key="parent_id">integer</field>
+    </operation>
+</operations>

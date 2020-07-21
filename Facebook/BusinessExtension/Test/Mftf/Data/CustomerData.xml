@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="_defaultCustomer" type="Customer">
+        <data key="email">homero@simpson.com</data>
+        <data key="firstName">Homer</data>
+        <data key="lastName">Simpson</data>
+        <data key="streetAddress">1234 Evergreen Ave</data>
+        <data key="city">Springfield</data>
+        <data key="state">Ohio</data>
+        <data key="zip">45501</data>
+        <data key="phone">5889372</data>
+    </entity>
+</entities>

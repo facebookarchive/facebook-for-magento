@@ -1,0 +1,21 @@
+<?php
+if ($this->getFacebookPixelID()) {
+  $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
+  $this->trackServerEvent($eventId);
+?>
+<script>
+fbq('trackCustom', 'ViewCategory', {
+  source: "<?php echo $this->getSource() ?>",
+  version: "<?php echo $this->getMagentoVersion() ?>",
+  pluginVersion: "<?php echo $this->getPluginVersion() ?>"
+  <?php if ($this->getCategory()) { ?>
+  , content_category: "<?php echo $this->getCategory() ?>"
+  <?php } ?>
+  }
+  ,{
+    eventID:  "<?php echo $eventId ?>"
+  }
+);
+</script>
+  <?php $this->logEvent($this->getFacebookPixelID(), 'ViewCategory') ?>
+<?php } ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<operations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/DataGenerator/etc/dataOperation.xsd">
+    <operation name="CreateProduct" dataType="product" type="create" auth="adminOauth" url="/V1/products" method="POST">
+        <contentType>application/json</contentType>
+        <object key="product" dataType="product">
+            <field key="id">integer</field>
+            <field key="sku">string</field>
+            <field key="name">string</field>
+            <field key="price">number</field>
+            <field key="status">integer</field>
+            <field key="visibility">integer</field>
+            <field key="type_id">string</field>
+            <field key="attribute_set_id">integer</field>
+            <field key="weight">integer</field>
+            <field key="extension_attributes">productExtensionAttribute</field>
+            <array key="custom_attributes">
+                <value>customAttributeArray</value>
+            </array>
+        </object>
+    </operation>
+</operations>

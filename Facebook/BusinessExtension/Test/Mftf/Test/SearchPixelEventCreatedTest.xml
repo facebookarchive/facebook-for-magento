@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Test/etc/testSchema.xsd">
+    <test name="SearchPixelEventCreatedTest">
+        <annotations>
+            <features value="Pixel"/>
+            <stories value="Search Pixel Event"/>
+            <title value="The page has a pixel search event."/>
+            <description value="The page should contain a fbq call with a search pixel event."/>
+            <severity value="MAJOR"/>
+            <group value="Pixel"/>
+        </annotations>
+        <before>
+        </before>
+        <after>
+        </after>
+
+        <!-- Navigate to Home page -->
+        <amOnPage url="" stepKey="openMainPage" />
+        <waitForPageLoad stepKey="waitForMainPageLoaded" />
+
+        <!-- Fill and submit search form -->
+        <actionGroup ref="fillSearchForm" stepKey="fillSearchForm">
+            <argument name="searchQuery" value="_defaultSearch" />
+        </actionGroup>
+
+        <!-- Check event inside page-->
+        <grabPageSource stepKey="grabPageSource" />
+        <assertRegExp message="Cannot find search event in page source" stepKey="assertSearchPixelEventFound">
+            <actualResult type="string">{$grabPageSource}</actualResult>
+            <expectedResult type="string">/.*fbq\('track',\s*'Search',\s*{\s*source: "{{_pluginInfo.source}}",\s*version: "2(.[0-9]+)+",\s*pluginVersion: "{{_pluginInfo.pluginVersion}}",\s*search_string: "{{_defaultSearch.query}}".*/</expectedResult>
+        </assertRegExp>
+    </test>
+</tests>

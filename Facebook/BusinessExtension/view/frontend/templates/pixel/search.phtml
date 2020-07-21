@@ -1,0 +1,19 @@
+<?php
+if ($this->getFacebookPixelID()) {
+  $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
+  $this->trackServerEvent($eventId);
+?>
+<script>
+fbq('track', 'Search', {
+    source: "<?php echo $this->getSource() ?>",
+    version: "<?php echo $this->getMagentoVersion() ?>",
+    pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+    search_string: "<?php echo $this->getSearchQuery() ?>"
+  }
+  ,{
+    eventID:  "<?php echo $eventId ?>"
+  }
+);
+</script>
+  <?php $this->logEvent($this->getFacebookPixelID(), 'Search') ?>
+<?php } ?>

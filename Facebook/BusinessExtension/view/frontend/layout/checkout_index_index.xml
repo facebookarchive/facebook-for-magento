@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page layout="checkout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Facebook\BusinessExtension\Block\Pixel\InitiateCheckout"
+                   name="fbe.pixel.initate_checkout"
+                   template="Facebook_BusinessExtension::pixel/initiate_checkout.phtml"
+                   before="-" />
+        </referenceContainer>
+    </body>
+</page>
