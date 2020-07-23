@@ -9,7 +9,8 @@ fbq('track', 'Purchase', {
   version: "<?php echo $this->getMagentoVersion() ?>",
   pluginVersion: "<?php echo $this->getPluginVersion() ?>",
   content_type: "<?php echo $this->getContentType() ?>",
-  content_ids: [<?php echo $this->getContentIDs() ?>]
+  content_ids: [<?php echo $this->getContentIDs() ?>],
+  contents: [<?php echo $this->getContents() ?>]
   <?php if ($this->getValue() && $this->getCurrency()) { ?>
     , value: <?php echo $this->getValue() ?>
     , currency: "<?php echo $this->getCurrency() ?>"
