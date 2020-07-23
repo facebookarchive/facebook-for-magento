@@ -2,7 +2,7 @@
 
 namespace Facebook\BusinessExtension\Controller\Adminhtml\Ajax;
 
-class FbAAMSettings extends AbstractAjax {
+class Fbaamsettings extends AbstractAjax {
 
   public function __construct(
     \Magento\Backend\App\Action\Context $context,

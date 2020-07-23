@@ -4,7 +4,7 @@ namespace Facebook\BusinessExtension\Test\Unit\Controller\Adminhtml\Ajax;
 
 use FacebookAds\Object\ServerSide\AdsPixelSettings;
 
-class FbAAMSettingsTest extends \PHPUnit\Framework\TestCase{
+class FbaamsettingsTest extends \PHPUnit\Framework\TestCase{
 
   protected $fbeHelper;
 
@@ -12,7 +12,7 @@ class FbAAMSettingsTest extends \PHPUnit\Framework\TestCase{
 
   protected $resultJsonFactory;
 
-  protected $fbAAMSettings;
+  protected $fbaamsettings;
 
   protected $request;
 
@@ -35,7 +35,7 @@ class FbAAMSettingsTest extends \PHPUnit\Framework\TestCase{
     $this->fbeHelper = $this->createMock(\Facebook\BusinessExtension\Helper\FBEHelper::class);
     $this->request = $this->createMock(\Magento\Framework\App\RequestInterface::class);
     $this->context->method('getRequest')->willReturn($this->request);
-    $this->fbAAMSettings = new \Facebook\BusinessExtension\Controller\Adminhtml\Ajax\FbAAMSettings(
+    $this->fbaamsettings = new \Facebook\BusinessExtension\Controller\Adminhtml\Ajax\Fbaamsettings(
       $this->context,
       $this->resultJsonFactory,
       $this->fbeHelper
@@ -55,7 +55,7 @@ class FbAAMSettingsTest extends \PHPUnit\Framework\TestCase{
   */
   public function testJsonNotSucessfullWhenInvalidPixelId() {
     $this->setupRequestAndSettings('1234', null);
-    $result = $this->fbAAMSettings->executeForJson();
+    $result = $this->fbaamsettings->executeForJson();
     $this->assertFalse($result['success']);
     $this->assertNull($result['settings']);
   }
@@ -75,7 +75,7 @@ class FbAAMSettingsTest extends \PHPUnit\Framework\TestCase{
       );
     $settingsAsString = json_encode($settingsAsArray);
     $this->setupRequestAndSettings($pixelId, $settingsAsString);
-    $result = $this->fbAAMSettings->executeForJson();
+    $result = $this->fbaamsettings->executeForJson();
     $this->assertTrue($result['success']);
     $this->assertEquals( $settingsAsString, $result['settings'] );
   }
