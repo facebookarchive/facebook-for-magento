@@ -89,6 +89,28 @@
         </FacebookAdsExtension>
       </updates>
     </layout>
+    <acl>
+        <all>
+            <title>Allow Everything</title>
+        </all>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <facebook_ads_toolbox translate="title" module="Facebook_AdsExtension">
+                                        <title>Facebook_AdsExtension</title>
+                                    </facebook_ads_toolbox>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
   </adminhtml>
   <crontab>
     <jobs>
